@@ -1,0 +1,14 @@
+﻿  Album.cpp
+  Band.cpp
+  Concert.cpp
+  Database.cpp
+  FormAdd.cpp
+  FormShow.cpp
+  Label.cpp
+  MainForm.cpp
+  Member.cpp
+  Place.cpp
+  Song.cpp
+  Generating Code...
+  Album.obj : MSIL module encountered; incremental linking is disabled for MSIL; performing full link
+  DataBase on C++.vcxproj -> C:\Users\Daniel af\source\repos\DataBase on C++\x64\Debug\DataBase on C++.exe
