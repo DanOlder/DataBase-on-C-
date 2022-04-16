@@ -15,10 +15,10 @@ namespace DataBaseonC {
 	public ref class FormShow : public System::Windows::Forms::Form
 	{
 	public:
-		FormShow(Form^ tempForm)
+		FormShow(Form^ tempForm, Database* db)
 		{
 			mainForm = tempForm;
-
+			database = db;
 			InitializeComponent();
 			//
 			//TODO: Add the constructor code here
@@ -44,6 +44,7 @@ namespace DataBaseonC {
 
 	private:
 		Form^ mainForm;
+		Database* database;
 		/// <summary>
 		/// Required designer variable.
 		/// </summary>

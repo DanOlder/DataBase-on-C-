@@ -5,31 +5,19 @@ Database::Database(){
     album_created = false;
     band_created = false;
     concert_created = false;
-    label_created = false;
     member_created = false;
     place_created = false;
+    recordlabel_created = false;
     song_created = false;
 }
 
-/*
-void Database::runDatabase(){
-	
-    addInfo();
-    label.get_all_data();
-    system("pause");
+void Database::addInfo(int table_num){
 
-}*/
-
-void Database::addInfo(){
-
-    //list of tables opens
     //user selects a table to add info to it
-    int table_num = 0;
-    std::cin >> table_num;
 
     switch (table_num)
     {
-        case 1: {//album
+        case A: {//album
             if (album_created) {
                 album.add_node();
             }
@@ -39,27 +27,27 @@ void Database::addInfo(){
                     album_created = true;
                 }
                 else {
-                    std::cout << "You need to create a band first";
+                    MessageBox::Show("You need to create a band first", "Error");
                 }
             }    
             break;
         }
-        case 2: {//band
+        case B: {//band
             if (band_created) {
                 band.add_node();
             }
             else {
-                if (label_created) {
+                if (recordlabel_created) {
                     band.fill_first_node();
                     band_created = true;
                 }
                 else {
-                    std::cout << "You need to create a label first";
+                    MessageBox::Show("You need to create a label first", "Error");
                 }
             }
             break;
         }
-        case 3: {//concert
+        case C: {//concert
             if (concert_created) {
                 concert.add_node();
             }
@@ -69,22 +57,12 @@ void Database::addInfo(){
                     concert_created = true;
                 }
                 else {
-                    std::cout << "You need to create a band and a place first";
+                    MessageBox::Show("You need to create a band and a place first", "Error");
                 }
             }
             break;
         }
-        case 4: {//label
-            if (label_created) {
-                label.add_node();
-            }
-            else {
-                label.fill_first_node();
-                label_created = true;
-            }
-            break;
-        }
-        case 5: {//member
+        case M: {//member
             if (member_created) {
                 member.add_node();
             }
@@ -94,12 +72,12 @@ void Database::addInfo(){
                     member_created = true;
                 }
                 else {
-                    std::cout << "You need to create a band and a place first";
+                    MessageBox::Show("You need to create a band and a place first", "Error");
                 }
             }
             break;
         }
-        case 6: {//place
+        case P: {//place
             if (place_created) {
                 place.add_node();
             }
@@ -109,7 +87,17 @@ void Database::addInfo(){
             }
             break;
         }
-        case 7: {//song
+        case R: {//recordlabel
+            if (recordlabel_created) {
+                recordlabel.add_node();
+            }
+            else {
+                recordlabel.fill_first_node();
+                recordlabel_created = true;
+            }
+            break;
+        }
+        case S: {//song
             if (song_created) {
                 song.add_node();
             }
@@ -119,7 +107,7 @@ void Database::addInfo(){
                     song_created = true;
                 }
                 else {
-                    std::cout << "You need to create an album first";
+                    MessageBox::Show("You need to create an album first","Error");
                 }
             }
             break;

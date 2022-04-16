@@ -1,7 +1,7 @@
 #pragma once
 
 typedef struct Band_type {
-    int label_id;
+    int recordLabel_id;
     std::string band_name;
     int year_of_forming;
 }Band_strc;

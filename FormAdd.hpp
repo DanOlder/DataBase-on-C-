@@ -15,10 +15,10 @@ namespace DataBaseonC {
 	public ref class FormAdd : public System::Windows::Forms::Form
 	{
 	public:
-		FormAdd(Form^ tempForm)
+		FormAdd(Form^ tempForm, Database* db)
 		{
 			mainForm = tempForm;
-
+			database = db;
 			InitializeComponent();
 			//
 			//TODO: Add the constructor code here
@@ -55,6 +55,7 @@ namespace DataBaseonC {
 
 	private:
 		Form^ mainForm;
+		Database* database;
 		/// <summary>
 		/// Required designer variable.
 		/// </summary>
@@ -95,6 +96,7 @@ namespace DataBaseonC {
 			this->btnAdd3->TabIndex = 11;
 			this->btnAdd3->Text = L"Add Concert";
 			this->btnAdd3->UseVisualStyleBackColor = true;
+			this->btnAdd3->Click += gcnew System::EventHandler(this, &FormAdd::btnAdd3_Click);
 			// 
 			// btnAdd2
 			// 
@@ -104,6 +106,7 @@ namespace DataBaseonC {
 			this->btnAdd2->TabIndex = 10;
 			this->btnAdd2->Text = L"Add Band";
 			this->btnAdd2->UseVisualStyleBackColor = true;
+			this->btnAdd2->Click += gcnew System::EventHandler(this, &FormAdd::btnAdd2_Click);
 			// 
 			// btnAdd1
 			// 
@@ -113,6 +116,7 @@ namespace DataBaseonC {
 			this->btnAdd1->TabIndex = 9;
 			this->btnAdd1->Text = L"Add Album";
 			this->btnAdd1->UseVisualStyleBackColor = true;
+			this->btnAdd1->Click += gcnew System::EventHandler(this, &FormAdd::btnAdd1_Click);
 			// 
 			// btnAdd4
 			// 
@@ -120,8 +124,9 @@ namespace DataBaseonC {
 			this->btnAdd4->Name = L"btnAdd4";
 			this->btnAdd4->Size = System::Drawing::Size(507, 48);
 			this->btnAdd4->TabIndex = 13;
-			this->btnAdd4->Text = L"Add Label";
+			this->btnAdd4->Text = L"Add Member";
 			this->btnAdd4->UseVisualStyleBackColor = true;
+			this->btnAdd4->Click += gcnew System::EventHandler(this, &FormAdd::btnAdd4_Click);
 			// 
 			// btnAdd5
 			// 
@@ -129,8 +134,9 @@ namespace DataBaseonC {
 			this->btnAdd5->Name = L"btnAdd5";
 			this->btnAdd5->Size = System::Drawing::Size(507, 48);
 			this->btnAdd5->TabIndex = 14;
-			this->btnAdd5->Text = L"Add Member";
+			this->btnAdd5->Text = L"Add Place";
 			this->btnAdd5->UseVisualStyleBackColor = true;
+			this->btnAdd5->Click += gcnew System::EventHandler(this, &FormAdd::btnAdd5_Click);
 			// 
 			// btnAdd6
 			// 
@@ -138,8 +144,9 @@ namespace DataBaseonC {
 			this->btnAdd6->Name = L"btnAdd6";
 			this->btnAdd6->Size = System::Drawing::Size(507, 48);
 			this->btnAdd6->TabIndex = 15;
-			this->btnAdd6->Text = L"Add Place";
+			this->btnAdd6->Text = L"Add Record Label";
 			this->btnAdd6->UseVisualStyleBackColor = true;
+			this->btnAdd6->Click += gcnew System::EventHandler(this, &FormAdd::btnAdd6_Click);
 			// 
 			// btnAdd7
 			// 
@@ -149,6 +156,7 @@ namespace DataBaseonC {
 			this->btnAdd7->TabIndex = 16;
 			this->btnAdd7->Text = L"Add Song";
 			this->btnAdd7->UseVisualStyleBackColor = true;
+			this->btnAdd7->Click += gcnew System::EventHandler(this, &FormAdd::btnAdd7_Click);
 			// 
 			// FormAdd
 			// 
@@ -174,6 +182,35 @@ private: System::Void btnExit_Click(System::Object^ sender, System::EventArgs^ e
 
 	this->Close();
 	mainForm->Show();
+}
+
+private: System::Void btnAdd1_Click(System::Object^ sender, System::EventArgs^ e) {
+
+	database->addInfo(A);
+}
+private: System::Void btnAdd2_Click(System::Object^ sender, System::EventArgs^ e) {
+
+	database->addInfo(B);
+}
+private: System::Void btnAdd3_Click(System::Object^ sender, System::EventArgs^ e) {
+
+	database->addInfo(C);
+}
+private: System::Void btnAdd4_Click(System::Object^ sender, System::EventArgs^ e) {
+
+	database->addInfo(M);
+}
+private: System::Void btnAdd5_Click(System::Object^ sender, System::EventArgs^ e) {
+
+	database->addInfo(P);
+}
+private: System::Void btnAdd6_Click(System::Object^ sender, System::EventArgs^ e) {
+
+	database->addInfo(R);
+}
+private: System::Void btnAdd7_Click(System::Object^ sender, System::EventArgs^ e) {
+
+	database->addInfo(S);
 }
 };
 }

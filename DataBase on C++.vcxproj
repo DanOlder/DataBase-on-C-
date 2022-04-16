@@ -116,11 +116,18 @@
     <ClCompile Include="Concert.cpp" />
     <ClCompile Include="Database.cpp" />
     <ClCompile Include="FormAdd.cpp" />
+    <ClCompile Include="FormFillA.cpp" />
+    <ClCompile Include="FormFillB.cpp" />
+    <ClCompile Include="FormFillC.cpp" />
+    <ClCompile Include="FormFillM.cpp" />
+    <ClCompile Include="FormFillP.cpp" />
+    <ClCompile Include="FormFillR.cpp" />
+    <ClCompile Include="FormFillS.cpp" />
     <ClCompile Include="FormShow.cpp" />
-    <ClCompile Include="Label.cpp" />
     <ClCompile Include="MainForm.cpp" />
     <ClCompile Include="Member.cpp" />
     <ClCompile Include="Place.cpp" />
+    <ClCompile Include="RecordLabel.cpp" />
     <ClCompile Include="Song.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -132,16 +139,37 @@
     <ClInclude Include="FormAdd.hpp">
       <FileType>CppForm</FileType>
     </ClInclude>
+    <ClInclude Include="FormFillA.hpp">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="FormFillB.hpp">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="FormFillC.hpp">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="FormFillM.hpp">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="FormFillP.hpp">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="FormFillR.hpp">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="FormFillS.hpp">
+      <FileType>CppForm</FileType>
+    </ClInclude>
     <ClInclude Include="FormShow.hpp">
       <FileType>CppForm</FileType>
     </ClInclude>
-    <ClInclude Include="Label.hpp" />
     <ClInclude Include="MainForm.hpp">
       <FileType>CppForm</FileType>
     </ClInclude>
     <ClInclude Include="Member.hpp" />
     <ClInclude Include="MyList.hpp" />
     <ClInclude Include="Place.hpp" />
+    <ClInclude Include="RecordLabel.hpp" />
     <ClInclude Include="Song.hpp" />
   </ItemGroup>
   <ItemGroup>
@@ -154,6 +182,15 @@
   <ItemGroup>
     <EmbeddedResource Include="FormAdd.resx">
       <DependentUpon>FormAdd.hpp</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormFillA.resx">
+      <DependentUpon>FormFillA.hpp</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormFillB.resx">
+      <DependentUpon>FormFillB.hpp</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormFillR.resx">
+      <DependentUpon>FormFillR.hpp</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormShow.resx">
       <DependentUpon>FormShow.hpp</DependentUpon>

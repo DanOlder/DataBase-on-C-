@@ -15,8 +15,9 @@ namespace DataBaseonC {
 	public ref class MainForm : public System::Windows::Forms::Form
 	{
 	public:
-		MainForm(void)
+		MainForm(Database* db)
 		{
+			database = db;
 			InitializeComponent();
 		}
 
@@ -39,7 +40,7 @@ namespace DataBaseonC {
 	protected:
 
 	private:
-
+		Database* database;
 		/// <summary>
 		/// Required designer variable.
 		/// </summary>
@@ -111,13 +112,13 @@ namespace DataBaseonC {
 	}
 	private: System::Void btnShow_Click(System::Object^ sender, System::EventArgs^ e) {
 
-		Form^ frm = gcnew FormShow(this);
+		Form^ frm = gcnew FormShow(this, database);
 		frm->Show();
 		this->Hide();
 	}
 	private: System::Void btnAdd_Click(System::Object^ sender, System::EventArgs^ e) {
 
-		Form^ frm = gcnew FormAdd(this);
+		Form^ frm = gcnew FormAdd(this, database);
 		frm->Show();
 		this->Hide();
 	}

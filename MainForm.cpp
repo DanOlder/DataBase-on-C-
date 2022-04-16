@@ -8,6 +8,6 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 
 	Application::EnableVisualStyles();
 	Application::SetCompatibleTextRenderingDefault(false);
-	Application::Run(gcnew MainForm);
+	Application::Run(gcnew MainForm(&database));
 	return 0;
 }

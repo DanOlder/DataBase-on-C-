@@ -13,74 +13,80 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Source Files\Tables">
+      <UniqueIdentifier>{d0880654-10c1-452c-92e5-ae9f9c99a3a7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\MainForms">
+      <UniqueIdentifier>{b1e588fc-ea1d-4692-8c28-15109275d4a7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\FIllingForms">
+      <UniqueIdentifier>{bffacd5e-fedd-402a-a383-0b209d42b402}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Tables">
+      <UniqueIdentifier>{ec78bd19-6102-4e3a-9cc4-48ee2f74ff65}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\DB">
+      <UniqueIdentifier>{8d2d3214-2f1b-425a-9db5-9d7a17bb4e4e}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="MainForm.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Album.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Band.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Concert.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Database.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Label.cpp">
-      <Filter>Source Files</Filter>
+    <ClCompile Include="FormFillA.cpp">
+      <Filter>Source Files\FIllingForms</Filter>
+    </ClCompile>
+    <ClCompile Include="FormFillB.cpp">
+      <Filter>Source Files\FIllingForms</Filter>
+    </ClCompile>
+    <ClCompile Include="FormFillC.cpp">
+      <Filter>Source Files\FIllingForms</Filter>
+    </ClCompile>
+    <ClCompile Include="FormFillM.cpp">
+      <Filter>Source Files\FIllingForms</Filter>
+    </ClCompile>
+    <ClCompile Include="FormFillP.cpp">
+      <Filter>Source Files\FIllingForms</Filter>
+    </ClCompile>
+    <ClCompile Include="FormFillR.cpp">
+      <Filter>Source Files\FIllingForms</Filter>
+    </ClCompile>
+    <ClCompile Include="FormFillS.cpp">
+      <Filter>Source Files\FIllingForms</Filter>
+    </ClCompile>
+    <ClCompile Include="Album.cpp">
+      <Filter>Source Files\Tables</Filter>
+    </ClCompile>
+    <ClCompile Include="Band.cpp">
+      <Filter>Source Files\Tables</Filter>
+    </ClCompile>
+    <ClCompile Include="Concert.cpp">
+      <Filter>Source Files\Tables</Filter>
     </ClCompile>
     <ClCompile Include="Member.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\Tables</Filter>
     </ClCompile>
     <ClCompile Include="Place.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\Tables</Filter>
+    </ClCompile>
+    <ClCompile Include="RecordLabel.cpp">
+      <Filter>Source Files\Tables</Filter>
     </ClCompile>
     <ClCompile Include="Song.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\Tables</Filter>
     </ClCompile>
-    <ClCompile Include="FormAdd.cpp">
-      <Filter>Source Files</Filter>
+    <ClCompile Include="MainForm.cpp">
+      <Filter>Source Files\MainForms</Filter>
     </ClCompile>
     <ClCompile Include="FormShow.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\MainForms</Filter>
+    </ClCompile>
+    <ClCompile Include="FormAdd.cpp">
+      <Filter>Source Files\MainForms</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="MainForm.hpp">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Album.hpp">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Band.hpp">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="BigHeader.hpp">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Concert.hpp">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Database.hpp">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Label.hpp">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Member.hpp">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="MyList.hpp">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Place.hpp">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Song.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="FormAdd.hpp">
@@ -88,6 +94,57 @@
     </ClInclude>
     <ClInclude Include="FormShow.hpp">
       <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="FormFillR.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Album.hpp">
+      <Filter>Header Files\Tables</Filter>
+    </ClInclude>
+    <ClInclude Include="Band.hpp">
+      <Filter>Header Files\Tables</Filter>
+    </ClInclude>
+    <ClInclude Include="Concert.hpp">
+      <Filter>Header Files\Tables</Filter>
+    </ClInclude>
+    <ClInclude Include="Member.hpp">
+      <Filter>Header Files\Tables</Filter>
+    </ClInclude>
+    <ClInclude Include="Song.hpp">
+      <Filter>Header Files\Tables</Filter>
+    </ClInclude>
+    <ClInclude Include="Place.hpp">
+      <Filter>Header Files\Tables</Filter>
+    </ClInclude>
+    <ClInclude Include="RecordLabel.hpp">
+      <Filter>Header Files\Tables</Filter>
+    </ClInclude>
+    <ClInclude Include="FormFillA.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="FormFillB.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="FormFillC.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="FormFillM.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="FormFillP.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="FormFillS.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="MyList.hpp">
+      <Filter>Header Files\DB</Filter>
+    </ClInclude>
+    <ClInclude Include="BigHeader.hpp">
+      <Filter>Header Files\DB</Filter>
+    </ClInclude>
+    <ClInclude Include="Database.hpp">
+      <Filter>Header Files\DB</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
