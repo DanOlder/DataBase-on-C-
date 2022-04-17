@@ -33,12 +33,23 @@ void Database::addInfo(int table_num){
             break;
         }
         case B: {//band
+            Band_strc* data;
             if (band_created) {
-                band.add_node();
+                
+                data = band.add_node();
+
+                Form^ fillform = gcnew FormFillB(data, this);
+                fillform->Show();
+
             }
             else {
                 if (recordlabel_created) {
-                    band.fill_first_node();
+                    data = band.fill_first_node();
+                    if (data == NULL) return;
+
+                    Form^ fillform = gcnew FormFillB(data, this);
+                    fillform->Show();
+
                     band_created = true;
                 }
                 else {

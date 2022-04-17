@@ -34,3 +34,14 @@ void RecordLabel::fill_first_node() {
         MessageBox::Show("The first node's already created","Error");
     }
 }
+
+int RecordLabel::find_id(std::string str) {
+
+    RecordLabel* temp;
+    for (temp = this->tail; temp != NULL; temp = temp->next) {
+        if (temp->data.label_name == str) {
+            return temp->get_id();
+        }
+    }
+    return -1;
+}

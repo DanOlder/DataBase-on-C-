@@ -189,8 +189,20 @@
     <EmbeddedResource Include="FormFillB.resx">
       <DependentUpon>FormFillB.hpp</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FormFillC.resx">
+      <DependentUpon>FormFillC.hpp</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormFillM.resx">
+      <DependentUpon>FormFillM.hpp</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormFillP.resx">
+      <DependentUpon>FormFillP.hpp</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormFillR.resx">
       <DependentUpon>FormFillR.hpp</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormFillS.resx">
+      <DependentUpon>FormFillS.hpp</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormShow.resx">
       <DependentUpon>FormShow.hpp</DependentUpon>

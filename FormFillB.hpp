@@ -15,8 +15,10 @@ namespace DataBaseonC {
 	public ref class FormFillB : public System::Windows::Forms::Form
 	{
 	public:
-		FormFillB(void)
+		FormFillB(Band_strc* dataTemp, Database* dbTemp)
 		{
+			data = dataTemp;
+			db = dbTemp;
 			InitializeComponent();
 			//
 			//TODO: Add the constructor code here
@@ -42,11 +44,14 @@ namespace DataBaseonC {
 	private: System::Windows::Forms::Label^ label2;
 	private: System::Windows::Forms::TextBox^ textBox2;
 	private: System::Windows::Forms::Label^ label1;
-	private: System::Windows::Forms::TextBox^ textBox1;
+
 	private: System::Windows::Forms::Button^ button1;
 
 	private:
-		/// <summary>
+		Band_strc* data;
+		Database* db;
+	private: System::Windows::Forms::ComboBox^ comboBox1;
+		   /// <summary>
 		/// Required designer variable.
 		/// </summary>
 		System::ComponentModel::Container ^components;
@@ -63,8 +68,8 @@ namespace DataBaseonC {
 			this->label2 = (gcnew System::Windows::Forms::Label());
 			this->textBox2 = (gcnew System::Windows::Forms::TextBox());
 			this->label1 = (gcnew System::Windows::Forms::Label());
-			this->textBox1 = (gcnew System::Windows::Forms::TextBox());
 			this->button1 = (gcnew System::Windows::Forms::Button());
+			this->comboBox1 = (gcnew System::Windows::Forms::ComboBox());
 			this->SuspendLayout();
 			// 
 			// label3
@@ -118,15 +123,6 @@ namespace DataBaseonC {
 			this->label1->TabIndex = 15;
 			this->label1->Text = L"Record Label Name:";
 			// 
-			// textBox1
-			// 
-			this->textBox1->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 14, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(204)));
-			this->textBox1->Location = System::Drawing::Point(293, 94);
-			this->textBox1->Name = L"textBox1";
-			this->textBox1->Size = System::Drawing::Size(232, 29);
-			this->textBox1->TabIndex = 14;
-			// 
 			// button1
 			// 
 			this->button1->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 14, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
@@ -137,25 +133,67 @@ namespace DataBaseonC {
 			this->button1->TabIndex = 20;
 			this->button1->Text = L"Enter";
 			this->button1->UseVisualStyleBackColor = true;
+			this->button1->Click += gcnew System::EventHandler(this, &FormFillB::button1_Click);
+			// 
+			// comboBox1
+			// 
+			this->comboBox1->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 14, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(204)));
+			this->comboBox1->FormattingEnabled = true;
+			this->comboBox1->Location = System::Drawing::Point(293, 91);
+			this->comboBox1->Name = L"comboBox1";
+			this->comboBox1->Size = System::Drawing::Size(232, 32);
+			this->comboBox1->TabIndex = 21;
 			// 
 			// FormFillB
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->ClientSize = System::Drawing::Size(593, 471);
+			this->Controls->Add(this->comboBox1);
 			this->Controls->Add(this->button1);
 			this->Controls->Add(this->label3);
 			this->Controls->Add(this->textBox3);
 			this->Controls->Add(this->label2);
 			this->Controls->Add(this->textBox2);
 			this->Controls->Add(this->label1);
-			this->Controls->Add(this->textBox1);
 			this->Name = L"FormFillB";
 			this->Text = L"FormFillB";
+			this->Load += gcnew System::EventHandler(this, &FormFillB::FormFillB_Load);
 			this->ResumeLayout(false);
 			this->PerformLayout();
 
 		}
 #pragma endregion
-	};
+	private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
+		
+		msclr::interop::marshal_context context;
+
+		int findedId;
+		findedId = db->recordlabel.find_id(context.marshal_as<std::string>(comboBox1->SelectedItem->ToString()));
+		if (findedId == -1) {
+			MessageBox::Show("Id error", "Error");
+			this->Close();
+		}
+
+		data->recordLabel_id = findedId;
+		data->band_name = context.marshal_as<std::string>(textBox2->Text);
+		data->year_of_forming = Convert::ToInt32(textBox3->Text);
+		
+		MessageBox::Show("Data's been sucsessfully recorded", "Done");
+		this->Close();
+
+	}
+private: System::Void textBox1_TextChanged(System::Object^ sender, System::EventArgs^ e) {
+}
+private: System::Void FormFillB_Load(System::Object^ sender, System::EventArgs^ e) {
+
+	msclr::interop::marshal_context context;
+
+	RecordLabel* temp;
+	for (temp = &(db->recordlabel); temp!= NULL; temp = temp->next) {
+		comboBox1->Items->Add(context.marshal_as<String^>(temp->data.label_name));
+	}
+}
+};
 }

@@ -1,5 +1,11 @@
   DataBaseonC.FormAdd.resources - Embedded, ContainedInManifestFile, 
+  DataBaseonC.FormFillA.resources - Embedded, ContainedInManifestFile, 
+  DataBaseonC.FormFillB.resources - Embedded, ContainedInManifestFile, 
+  DataBaseonC.FormFillC.resources - Embedded, ContainedInManifestFile, 
+  DataBaseonC.FormFillM.resources - Embedded, ContainedInManifestFile, 
+  DataBaseonC.FormFillP.resources - Embedded, ContainedInManifestFile, 
   DataBaseonC.FormFillR.resources - Embedded, ContainedInManifestFile, 
+  DataBaseonC.FormFillS.resources - Embedded, ContainedInManifestFile, 
   DataBaseonC.FormShow.resources - Embedded, ContainedInManifestFile, 
   DataBaseonC.MainForm.resources - Embedded, ContainedInManifestFile, 
 ImageRuntimeVersion: v4.0.30319
@@ -22,25 +28,25 @@ Class DataBaseonC.FormShow: AutoLayout, AnsiClass, Class, Public, BeforeFieldIni
     Void .ctor(System.Windows.Forms.Form, Database*): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
 Class DataBaseonC.FormFillA: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
   :System.Windows.Forms.Form
-    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+    Void .ctor(Album_type*): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
 Class DataBaseonC.FormFillB: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
   :System.Windows.Forms.Form
-    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+    Void .ctor(Band_type*, Database*): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
 Class DataBaseonC.FormFillC: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
   :System.Windows.Forms.Form
-    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+    Void .ctor(Concert_type*): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
 Class DataBaseonC.FormFillM: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
   :System.Windows.Forms.Form
-    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+    Void .ctor(Member_type*): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
 Class DataBaseonC.FormFillP: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
   :System.Windows.Forms.Form
-    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+    Void .ctor(Place_type*): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
 Class DataBaseonC.FormFillR: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
   :System.Windows.Forms.Form
     Void .ctor(RecordLabel_type*): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
 Class DataBaseonC.FormFillS: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
   :System.Windows.Forms.Form
-    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+    Void .ctor(Song_type*): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
 Class DataBaseonC.FormAdd: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
   :System.Windows.Forms.Form
     Void .ctor(System.Windows.Forms.Form, Database*): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName

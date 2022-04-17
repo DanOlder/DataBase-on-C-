@@ -6,9 +6,10 @@ Band::Band() {
 
 Band::Band(int id) {
 
+    /*
     Form^ fillform = gcnew FormFillB(&data);
     fillform->Show();
-
+    */
     /*
     std::cout << "Enter the band name" << std::endl;
     std::cin >> data.band_name;
@@ -35,11 +36,14 @@ void Band::get_all_data() {
     }
 }
 
-void Band::fill_first_node() {
+Band_strc* Band::fill_first_node() {
     if (this == this->tail) {
 
+        return &data;
+        /*
         Form^ fillform = gcnew FormFillB(&data);
         fillform->Show();
+        */
 
     /*
         std::cout << "Enter the band name" << std::endl;
@@ -52,5 +56,10 @@ void Band::fill_first_node() {
     }
     else {
         MessageBox::Show("The first node's already created", "Error");
+        return NULL;
     }
+}
+
+int Band::find_id(std::string) {
+    return -1;
 }

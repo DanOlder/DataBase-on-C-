@@ -10,9 +10,13 @@ enum {
 	S
 };
 
+
+
 #include "windows.h"
 #include <iostream>
 #include <string>
+//for using std and system strings incompatible
+#include <msclr\marshal_cppstd.h>
 
 #include "Mylist.hpp"
 
@@ -23,9 +27,6 @@ enum {
 #include "Place.hpp"
 #include "RecordLabel.hpp"
 #include "Song.hpp"
-
-//for using std and system strings incompatible
-#include <msclr\marshal_cppstd.h>
 
 #include "Database.hpp"
 #include "FormShow.hpp"

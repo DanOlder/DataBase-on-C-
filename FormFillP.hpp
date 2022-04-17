@@ -15,7 +15,7 @@ namespace DataBaseonC {
 	public ref class FormFillP : public System::Windows::Forms::Form
 	{
 	public:
-		FormFillP(void)
+		FormFillP(Place_strc* dataTemp)
 		{
 			InitializeComponent();
 			//
@@ -34,6 +34,12 @@ namespace DataBaseonC {
 				delete components;
 			}
 		}
+	private: System::Windows::Forms::Button^ button1;
+	protected:
+	private: System::Windows::Forms::Label^ label2;
+	private: System::Windows::Forms::TextBox^ textBox2;
+	private: System::Windows::Forms::Label^ label1;
+	private: System::Windows::Forms::TextBox^ textBox1;
 
 	private:
 		/// <summary>
@@ -48,12 +54,86 @@ namespace DataBaseonC {
 		/// </summary>
 		void InitializeComponent(void)
 		{
-			this->components = gcnew System::ComponentModel::Container();
-			this->Size = System::Drawing::Size(300,300);
-			this->Text = L"FormFillP";
-			this->Padding = System::Windows::Forms::Padding(0);
+			this->button1 = (gcnew System::Windows::Forms::Button());
+			this->label2 = (gcnew System::Windows::Forms::Label());
+			this->textBox2 = (gcnew System::Windows::Forms::TextBox());
+			this->label1 = (gcnew System::Windows::Forms::Label());
+			this->textBox1 = (gcnew System::Windows::Forms::TextBox());
+			this->SuspendLayout();
+			// 
+			// button1
+			// 
+			this->button1->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 14, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(204)));
+			this->button1->Location = System::Drawing::Point(217, 275);
+			this->button1->Name = L"button1";
+			this->button1->Size = System::Drawing::Size(166, 62);
+			this->button1->TabIndex = 9;
+			this->button1->Text = L"Enter";
+			this->button1->UseVisualStyleBackColor = true;
+			this->button1->Click += gcnew System::EventHandler(this, &FormFillP::button1_Click);
+			// 
+			// label2
+			// 
+			this->label2->AutoSize = true;
+			this->label2->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 14, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(204)));
+			this->label2->Location = System::Drawing::Point(70, 164);
+			this->label2->Name = L"label2";
+			this->label2->Size = System::Drawing::Size(135, 24);
+			this->label2->TabIndex = 8;
+			this->label2->Text = L"Year of Found:";
+			// 
+			// textBox2
+			// 
+			this->textBox2->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 14, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(204)));
+			this->textBox2->Location = System::Drawing::Point(303, 164);
+			this->textBox2->Name = L"textBox2";
+			this->textBox2->Size = System::Drawing::Size(232, 29);
+			this->textBox2->TabIndex = 7;
+			// 
+			// label1
+			// 
+			this->label1->AutoSize = true;
+			this->label1->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 14, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(204)));
+			this->label1->Location = System::Drawing::Point(70, 98);
+			this->label1->Name = L"label1";
+			this->label1->Size = System::Drawing::Size(184, 24);
+			this->label1->TabIndex = 6;
+			this->label1->Text = L"Record Label Name:";
+			// 
+			// textBox1
+			// 
+			this->textBox1->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 14, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(204)));
+			this->textBox1->Location = System::Drawing::Point(303, 98);
+			this->textBox1->Name = L"textBox1";
+			this->textBox1->Size = System::Drawing::Size(232, 29);
+			this->textBox1->TabIndex = 5;
+			// 
+			// FormFillP
+			// 
+			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
+			this->ClientSize = System::Drawing::Size(621, 440);
+			this->Controls->Add(this->button1);
+			this->Controls->Add(this->label2);
+			this->Controls->Add(this->textBox2);
+			this->Controls->Add(this->label1);
+			this->Controls->Add(this->textBox1);
+			this->Name = L"FormFillP";
+			this->Text = L"FormFillP";
+			this->Load += gcnew System::EventHandler(this, &FormFillP::FormFillP_Load);
+			this->ResumeLayout(false);
+			this->PerformLayout();
+
 		}
 #pragma endregion
-	};
+	private: System::Void FormFillP_Load(System::Object^ sender, System::EventArgs^ e) {
+	}
+	private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
+	}
+};
 }

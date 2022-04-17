@@ -15,7 +15,7 @@ namespace DataBaseonC {
 	public ref class FormFillM : public System::Windows::Forms::Form
 	{
 	public:
-		FormFillM(void)
+		FormFillM(Member_strc* dataTemp)
 		{
 			InitializeComponent();
 			//
@@ -48,12 +48,21 @@ namespace DataBaseonC {
 		/// </summary>
 		void InitializeComponent(void)
 		{
-			this->components = gcnew System::ComponentModel::Container();
-			this->Size = System::Drawing::Size(300,300);
-			this->Text = L"FormFillM";
-			this->Padding = System::Windows::Forms::Padding(0);
+			this->SuspendLayout();
+			// 
+			// FormFillM
+			// 
+			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
+			this->ClientSize = System::Drawing::Size(284, 261);
+			this->Name = L"FormFillM";
+			this->Text = L"FormFillM";
+			this->Load += gcnew System::EventHandler(this, &FormFillM::FormFillM_Load);
+			this->ResumeLayout(false);
+
 		}
 #pragma endregion
+	private: System::Void FormFillM_Load(System::Object^ sender, System::EventArgs^ e) {
+	}
 	};
 }

@@ -1,7 +1,13 @@
 C:\Users\Daniel af\source\repos\DataBase on C++\x64\Debug\DataBase on C++.vcxproj.AssemblyReference.cache
 C:\Users\Daniel af\source\repos\DataBase on C++\x64\Debug\DataBase on C++.vcxproj.SuggestedBindingRedirects.cache
 C:\Users\Daniel af\source\repos\DataBase on C++\x64\Debug\DataBaseonC.FormAdd.resources
+C:\Users\Daniel af\source\repos\DataBase on C++\x64\Debug\DataBaseonC.FormFillA.resources
+C:\Users\Daniel af\source\repos\DataBase on C++\x64\Debug\DataBaseonC.FormFillB.resources
+C:\Users\Daniel af\source\repos\DataBase on C++\x64\Debug\DataBaseonC.FormFillC.resources
+C:\Users\Daniel af\source\repos\DataBase on C++\x64\Debug\DataBaseonC.FormFillM.resources
+C:\Users\Daniel af\source\repos\DataBase on C++\x64\Debug\DataBaseonC.FormFillP.resources
 C:\Users\Daniel af\source\repos\DataBase on C++\x64\Debug\DataBaseonC.FormFillR.resources
+C:\Users\Daniel af\source\repos\DataBase on C++\x64\Debug\DataBaseonC.FormFillS.resources
 C:\Users\Daniel af\source\repos\DataBase on C++\x64\Debug\DataBaseonC.FormShow.resources
 C:\Users\Daniel af\source\repos\DataBase on C++\x64\Debug\DataBaseonC.MainForm.resources
 C:\Users\Daniel af\source\repos\DataBase on C++\x64\Debug\DataBase on C++.vcxproj.GenerateResource.cache

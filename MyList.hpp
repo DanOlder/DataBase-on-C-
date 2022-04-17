@@ -11,7 +11,7 @@ public:
     Type* next;
 
     MyList();
-    void add_node();
+    Strc* add_node();
     int get_id();
     Type* find_with_id(int wanted_id);
 
@@ -27,13 +27,15 @@ inline MyList<Strc, Type>::MyList()
 }
 
 template<typename Strc, typename Type>
-inline void MyList<Strc, Type>::add_node()
+inline Strc* MyList<Strc, Type>::add_node()
 {
     Type* new_node = new Type(id);
     new_node->id = (head->id) + 1;
     new_node->tail = tail;
     head->next = new_node;
     head = new_node;
+
+    return &(new_node->data);
 }
 
 template<typename Strc, typename Type>

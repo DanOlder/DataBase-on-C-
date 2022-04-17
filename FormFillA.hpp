@@ -15,7 +15,7 @@ namespace DataBaseonC {
 	public ref class FormFillA : public System::Windows::Forms::Form
 	{
 	public:
-		FormFillA(void)
+		FormFillA(Album_strc* dataTemp)
 		{
 			InitializeComponent();
 			//
@@ -120,6 +120,7 @@ namespace DataBaseonC {
 			this->textBox1->Name = L"textBox1";
 			this->textBox1->Size = System::Drawing::Size(232, 29);
 			this->textBox1->TabIndex = 5;
+			this->textBox1->TextChanged += gcnew System::EventHandler(this, &FormFillA::textBox1_TextChanged);
 			// 
 			// label3
 			// 
@@ -184,5 +185,7 @@ namespace DataBaseonC {
 #pragma endregion
 	private: System::Void label2_Click(System::Object^ sender, System::EventArgs^ e) {
 	}
+private: System::Void textBox1_TextChanged(System::Object^ sender, System::EventArgs^ e) {
+}
 };
 }
