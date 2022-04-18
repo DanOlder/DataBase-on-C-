@@ -15,8 +15,10 @@ namespace DataBaseonC {
 	public ref class FormFillA : public System::Windows::Forms::Form
 	{
 	public:
-		FormFillA(Album_strc* dataTemp)
+		FormFillA(Album_strc* dataTemp, Database* bdTemp)
 		{
+			data = dataTemp;
+			db = bdTemp;
 			InitializeComponent();
 			//
 			//TODO: Add the constructor code here
@@ -39,14 +41,17 @@ namespace DataBaseonC {
 	private: System::Windows::Forms::Label^ label2;
 	private: System::Windows::Forms::TextBox^ textBox2;
 	private: System::Windows::Forms::Label^ label1;
-	private: System::Windows::Forms::TextBox^ textBox1;
+
 	private: System::Windows::Forms::Label^ label3;
 	private: System::Windows::Forms::TextBox^ textBox3;
 	private: System::Windows::Forms::Label^ label4;
 	private: System::Windows::Forms::TextBox^ textBox4;
 
 	private:
-		/// <summary>
+		Album_strc* data;
+		Database* db;
+	private: System::Windows::Forms::ComboBox^ comboBox1;
+		   /// <summary>
 		/// Required designer variable.
 		/// </summary>
 		System::ComponentModel::Container ^components;
@@ -62,11 +67,11 @@ namespace DataBaseonC {
 			this->label2 = (gcnew System::Windows::Forms::Label());
 			this->textBox2 = (gcnew System::Windows::Forms::TextBox());
 			this->label1 = (gcnew System::Windows::Forms::Label());
-			this->textBox1 = (gcnew System::Windows::Forms::TextBox());
 			this->label3 = (gcnew System::Windows::Forms::Label());
 			this->textBox3 = (gcnew System::Windows::Forms::TextBox());
 			this->label4 = (gcnew System::Windows::Forms::Label());
 			this->textBox4 = (gcnew System::Windows::Forms::TextBox());
+			this->comboBox1 = (gcnew System::Windows::Forms::ComboBox());
 			this->SuspendLayout();
 			// 
 			// button1
@@ -79,6 +84,7 @@ namespace DataBaseonC {
 			this->button1->TabIndex = 9;
 			this->button1->Text = L"Enter";
 			this->button1->UseVisualStyleBackColor = true;
+			this->button1->Click += gcnew System::EventHandler(this, &FormFillA::button1_Click);
 			// 
 			// label2
 			// 
@@ -111,16 +117,6 @@ namespace DataBaseonC {
 			this->label1->Size = System::Drawing::Size(115, 24);
 			this->label1->TabIndex = 6;
 			this->label1->Text = L"Band Name:";
-			// 
-			// textBox1
-			// 
-			this->textBox1->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 14, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(204)));
-			this->textBox1->Location = System::Drawing::Point(277, 88);
-			this->textBox1->Name = L"textBox1";
-			this->textBox1->Size = System::Drawing::Size(232, 29);
-			this->textBox1->TabIndex = 5;
-			this->textBox1->TextChanged += gcnew System::EventHandler(this, &FormFillA::textBox1_TextChanged);
 			// 
 			// label3
 			// 
@@ -162,11 +158,22 @@ namespace DataBaseonC {
 			this->textBox4->Size = System::Drawing::Size(232, 29);
 			this->textBox4->TabIndex = 12;
 			// 
+			// comboBox1
+			// 
+			this->comboBox1->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 14, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(204)));
+			this->comboBox1->FormattingEnabled = true;
+			this->comboBox1->Location = System::Drawing::Point(277, 85);
+			this->comboBox1->Name = L"comboBox1";
+			this->comboBox1->Size = System::Drawing::Size(232, 32);
+			this->comboBox1->TabIndex = 22;
+			// 
 			// FormFillA
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->ClientSize = System::Drawing::Size(552, 449);
+			this->Controls->Add(this->comboBox1);
 			this->Controls->Add(this->label4);
 			this->Controls->Add(this->textBox4);
 			this->Controls->Add(this->label3);
@@ -175,9 +182,9 @@ namespace DataBaseonC {
 			this->Controls->Add(this->label2);
 			this->Controls->Add(this->textBox2);
 			this->Controls->Add(this->label1);
-			this->Controls->Add(this->textBox1);
 			this->Name = L"FormFillA";
 			this->Text = L"FormFillA";
+			this->Load += gcnew System::EventHandler(this, &FormFillA::FormFillA_Load);
 			this->ResumeLayout(false);
 			this->PerformLayout();
 
@@ -186,6 +193,35 @@ namespace DataBaseonC {
 	private: System::Void label2_Click(System::Object^ sender, System::EventArgs^ e) {
 	}
 private: System::Void textBox1_TextChanged(System::Object^ sender, System::EventArgs^ e) {
+}
+private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
+
+	msclr::interop::marshal_context context;
+
+	int findedId;
+	findedId = db->band.find_id(context.marshal_as<std::string>(comboBox1->SelectedItem->ToString()));
+	if (findedId == -1) {
+		MessageBox::Show("Id error", "Error");
+		this->Close();
+	}
+
+	data->band_id = findedId;
+	data->album_name = context.marshal_as<std::string>(textBox2->Text);
+	data->release_year = Convert::ToInt32(textBox3->Text);
+	data->number_of_songs = Convert::ToInt32(textBox4->Text);
+
+	MessageBox::Show("Data's been sucsessfully recorded", "Done");
+	this->Close();
+
+}
+private: System::Void FormFillA_Load(System::Object^ sender, System::EventArgs^ e) {
+
+	msclr::interop::marshal_context context;
+
+	Band* temp;
+	for (temp = &(db->band); temp != NULL; temp = temp->next) {
+		comboBox1->Items->Add(context.marshal_as<String^>(temp->data.band_name));
+	}
 }
 };
 }

@@ -15,6 +15,8 @@ enum {
 #include "windows.h"
 #include <iostream>
 #include <string>
+#include <fstream>
+
 //for using std and system strings incompatible
 #include <msclr\marshal_cppstd.h>
 

@@ -18,12 +18,23 @@ void Database::addInfo(int table_num){
     switch (table_num)
     {
         case A: {//album
+            Album_strc* data;
             if (album_created) {
-                album.add_node();
+
+                data = album.add_node();
+
+                Form^ fillform = gcnew FormFillA(data, this);
+                fillform->Show();
             }
             else {
                 if (band_created) {
-                    album.fill_first_node();
+
+                    data = album.fill_first_node();
+                    if (data == NULL) return;
+
+                    Form^ fillform = gcnew FormFillA(data, this);
+                    fillform->Show();
+
                     album_created = true;
                 }
                 else {
@@ -124,4 +135,147 @@ void Database::addInfo(int table_num){
             break;
         }
     }
+}
+
+void Database::saveInFile()
+{
+    //queue:
+    //recordlabel -> place -> band -> album -> song -> member -> concert
+
+    std::ofstream fout("db.txt");
+
+
+    if (recordlabel_created) {
+        fout << "R\n";
+
+        RecordLabel* temp;
+        for (temp = &(this->recordlabel); temp != NULL; temp = temp->next) {
+            RecordLabel_strc* data = &(temp->data);
+            fout << temp->get_id();
+            fout << " ";
+            fout << data->label_name;
+            fout << " ";
+            fout << data->year_of_found;
+            fout << "\n";
+        }
+        fout << "\n";
+    }
+    if (place_created) {
+        fout << "P\n";
+
+        Place* temp;
+        for (temp = &(this->place); temp != NULL; temp = temp->next) {
+            Place_strc* data = &(temp->data);
+            fout << temp->get_id();
+            fout << " ";
+            fout << data->country;
+            fout << " ";
+            fout << data->region;
+            fout << " ";
+            fout << data->city;
+            fout << "\n";
+        }
+        fout << "\n";
+    }
+    if (band_created) {
+        fout << "B\n";
+
+        Band* temp;
+        for (temp = &(this->band); temp != NULL; temp = temp->next) {
+            Band_strc* data = &(temp->data);
+            fout << temp->get_id();
+            fout << " ";
+            fout << data->recordLabel_id;
+            fout << " ";
+            fout << data->band_name;
+            fout << " ";
+            fout << data->year_of_forming;
+            fout << "\n";
+        }
+        fout << "\n";
+    }
+    if (album_created) {
+        fout << "A\n";
+
+        Album* temp;
+        for (temp = &(this->album); temp != NULL; temp = temp->next) {
+            Album_strc* data = &(temp->data);
+            fout << temp->get_id();
+            fout << " ";
+            fout << data->band_id;
+            fout << " ";
+            fout << data->album_name;
+            fout << " ";
+            fout << data->release_year;
+            fout << " ";
+            fout << data->number_of_songs;
+            fout << "\n";
+        }
+        fout << "\n";
+    }
+    if (song_created) {
+        fout << "S\n";
+
+        Song* temp;
+        for (temp = &(this->song); temp != NULL; temp = temp->next) {
+            Song_strc* data = &(temp->data);
+            fout << temp->get_id();
+            fout << " ";
+            fout << data->album_id;
+            fout << " ";
+            fout << data->song_name;
+            fout << " ";
+            fout << data->genre;
+            fout << " ";
+            fout << data->is_single;
+            fout << "\n";
+        }
+        fout << "\n";
+    }
+    if (member_created) {
+        fout << "M\n";
+
+        Member* temp;
+        for (temp = &(this->member); temp != NULL; temp = temp->next) {
+            Member_strc* data = &(temp->data);
+            fout << temp->get_id();
+            fout << " ";
+            fout << data->band_id;
+            fout << " ";
+            fout << data->place_id;
+            fout << " ";
+            fout << data->birth_date;
+            fout << " ";
+            fout << data->member_name;
+            fout << " ";
+            fout << data->member_lastname;
+            fout << " ";
+            fout << data->is_frontman;
+            fout << "\n";
+        }
+        fout << "\n";
+    }
+    if (concert_created) {
+        fout << "C\n";
+
+        Concert* temp;
+        for (temp = &(this->concert); temp != NULL; temp = temp->next) {
+            Concert_strc* data = &(temp->data);
+            fout << temp->get_id();
+            fout << " ";
+            fout << data->band_id;
+            fout << " ";
+            fout << data->place_id;
+            fout << " ";
+            fout << data->concert_date;
+            fout << "\n";
+        }
+        fout << "\n";
+    }
+
+    fout.close();
+}
+
+void Database::loadFromFile()
+{
 }

@@ -28,7 +28,7 @@ Class DataBaseonC.FormShow: AutoLayout, AnsiClass, Class, Public, BeforeFieldIni
     Void .ctor(System.Windows.Forms.Form, Database*): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
 Class DataBaseonC.FormFillA: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
   :System.Windows.Forms.Form
-    Void .ctor(Album_type*): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+    Void .ctor(Album_type*, Database*): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
 Class DataBaseonC.FormFillB: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
   :System.Windows.Forms.Form
     Void .ctor(Band_type*, Database*): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName

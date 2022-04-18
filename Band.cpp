@@ -60,6 +60,13 @@ Band_strc* Band::fill_first_node() {
     }
 }
 
-int Band::find_id(std::string) {
+int Band::find_id(std::string str) {
+
+    Band* temp;
+    for (temp = this->tail; temp != NULL; temp = temp->next) {
+        if (temp->data.band_name == str) {
+            return temp->get_id();
+        }
+    }
     return -1;
 }

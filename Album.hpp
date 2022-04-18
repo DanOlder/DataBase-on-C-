@@ -14,5 +14,7 @@ public:
 
     void get_data(int wanted_id);
     void get_all_data();
-    void fill_first_node();
+    Album_strc* fill_first_node();
+
+    int find_id(std::string);
 };

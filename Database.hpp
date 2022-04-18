@@ -23,5 +23,6 @@ public:
 	Database();
 	void runDatabase();
 	void addInfo(int);
+	void saveInFile();
+	void loadFromFile();
 };
-
