@@ -35,3 +35,14 @@ Place_strc* Place::fill_first_node()
         return NULL;
     }
 }
+
+int Place::find_id(std::string str) {
+
+    Place* temp;
+    for (temp = this->tail; temp != NULL; temp = temp->next) {
+        if (temp->data.city == str) {
+            return temp->get_id();
+        }
+    }
+    return -1;
+}

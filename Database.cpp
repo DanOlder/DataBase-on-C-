@@ -70,12 +70,23 @@ void Database::addInfo(int table_num){
             break;
         }
         case C: {//concert
+            Concert_strc* data;
             if (concert_created) {
-                concert.add_node();
+
+                data = concert.add_node();
+
+                Form^ fillform = gcnew FormFillC(data, this);
+                fillform->Show();
+
             }
             else {
                 if (band_created && place_created) {
-                    concert.fill_first_node();
+                    data = concert.fill_first_node();
+                    if (data == NULL) return;
+
+                    Form^ fillform = gcnew FormFillC(data, this);
+                    fillform->Show();
+
                     concert_created = true;
                 }
                 else {
@@ -85,12 +96,23 @@ void Database::addInfo(int table_num){
             break;
         }
         case M: {//member
+            Member_strc* data;
             if (member_created) {
-                member.add_node();
+
+                data = member.add_node();
+
+                Form^ fillform = gcnew FormFillM(data, this);
+                fillform->Show();
+
             }
             else {
                 if (band_created && place_created) {
-                    member.fill_first_node();
+                    data = member.fill_first_node();
+                    if (data == NULL) return;
+
+                    Form^ fillform = gcnew FormFillM(data, this);
+                    fillform->Show();
+
                     member_created = true;
                 }
                 else {
@@ -638,11 +660,139 @@ void Database::loadFromFile()
                     break;
                 }
                 case 'M': {
-                    
+                    Member_strc* data;
+                    std::string token;
+                    size_t pos = 0;
+
+                    if (member_created) {
+
+                        data = member.add_node();
+
+                        pos = str.find(delimiter);
+                        token = str.substr(0, pos);
+                        data->band_id = stoi(token);
+                        str.erase(0, pos + delimiter.length());
+
+                        pos = str.find(delimiter);
+                        token = str.substr(0, pos);
+                        data->place_id = stoi(token);
+                        str.erase(0, pos + delimiter.length());
+
+                        pos = str.find(delimiter);
+                        token = str.substr(0, pos);
+                        data->birth_date = token;
+                        str.erase(0, pos + delimiter.length());
+
+                        pos = str.find(delimiter);
+                        token = str.substr(0, pos);
+                        data->member_name = token;
+                        str.erase(0, pos + delimiter.length());
+
+                        pos = str.find(delimiter);
+                        token = str.substr(0, pos);
+                        data->member_lastname = token;
+                        str.erase(0, pos + delimiter.length());
+
+                        pos = str.find(delimiter);
+                        token = str.substr(0, pos);
+                        data->is_frontman = token;
+                        str.erase(0, pos + delimiter.length());
+
+                    }
+                    else {
+                        if (band_created && place_created) {
+                            data = member.fill_first_node();
+                            if (data == NULL) return;
+
+                            pos = str.find(delimiter);
+                            token = str.substr(0, pos);
+                            data->band_id = stoi(token);
+                            str.erase(0, pos + delimiter.length());
+
+                            pos = str.find(delimiter);
+                            token = str.substr(0, pos);
+                            data->place_id = stoi(token);
+                            str.erase(0, pos + delimiter.length());
+
+                            pos = str.find(delimiter);
+                            token = str.substr(0, pos);
+                            data->birth_date = token;
+                            str.erase(0, pos + delimiter.length());
+
+                            pos = str.find(delimiter);
+                            token = str.substr(0, pos);
+                            data->member_name = token;
+                            str.erase(0, pos + delimiter.length());
+
+                            pos = str.find(delimiter);
+                            token = str.substr(0, pos);
+                            data->member_lastname = token;
+                            str.erase(0, pos + delimiter.length());
+
+                            pos = str.find(delimiter);
+                            token = str.substr(0, pos);
+                            data->is_frontman = token;
+                            str.erase(0, pos + delimiter.length());
+
+                            member_created = true;
+                        }
+                        else {
+                            MessageBox::Show("You need to create a band and a place first", "Error");
+                        }
+                    }
                     break;
                 }
                 case 'C': {
-                    
+                    Concert_strc* data;
+                    std::string token;
+                    size_t pos = 0;
+
+                    if (concert_created) {
+
+                        data = concert.add_node();
+
+                        pos = str.find(delimiter);
+                        token = str.substr(0, pos);
+                        data->band_id = stoi(token);
+                        str.erase(0, pos + delimiter.length());
+
+                        pos = str.find(delimiter);
+                        token = str.substr(0, pos);
+                        data->place_id = stoi(token);
+                        str.erase(0, pos + delimiter.length());
+
+                        pos = str.find(delimiter);
+                        token = str.substr(0, pos);
+                        data->concert_date = token;
+                        str.erase(0, pos + delimiter.length());
+
+                    }
+                    else {
+                        if (band_created && place_created) {
+                            data = concert.fill_first_node();
+                            if (data == NULL) return;
+
+                            pos = str.find(delimiter);
+                            token = str.substr(0, pos);
+                            data->band_id = stoi(token);
+                            str.erase(0, pos + delimiter.length());
+
+                            pos = str.find(delimiter);
+                            token = str.substr(0, pos);
+                            data->place_id = stoi(token);
+                            str.erase(0, pos + delimiter.length());
+
+                            pos = str.find(delimiter);
+                            token = str.substr(0, pos);
+                            data->concert_date = token;
+                            str.erase(0, pos + delimiter.length());
+
+                            concert_created = true;
+                        }
+                        else {
+                            MessageBox::Show("You need to create a band and a place first", "Error");
+                        }
+                    }
                     break;
                 }
             }

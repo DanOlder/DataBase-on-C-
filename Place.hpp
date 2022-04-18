@@ -14,4 +14,6 @@ public:
     void get_data(int wanted_id);
     void get_all_data();
     Place_strc* fill_first_node();
+
+    int find_id(std::string str);
 };

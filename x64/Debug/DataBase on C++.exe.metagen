@@ -34,10 +34,10 @@ Class DataBaseonC.FormFillB: AutoLayout, AnsiClass, Class, Public, BeforeFieldIn
     Void .ctor(Band_type*, Database*): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
 Class DataBaseonC.FormFillC: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
   :System.Windows.Forms.Form
-    Void .ctor(Concert_type*): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+    Void .ctor(Concert_type*, Database*): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
 Class DataBaseonC.FormFillM: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
   :System.Windows.Forms.Form
-    Void .ctor(Member_type*): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+    Void .ctor(Member_type*, Database*): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
 Class DataBaseonC.FormFillP: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
   :System.Windows.Forms.Form
     Void .ctor(Place_type*): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName

@@ -6,7 +6,7 @@ typedef struct Member_type {
     std::string birth_date;
     std::string member_name;
     std::string member_lastname;
-    bool is_frontman;
+    std::string is_frontman;
 }Member_strc;
 
 class Member : public MyList <Member_strc, Member> {
@@ -16,5 +16,5 @@ public:
 
     void get_data(int wanted_id);
     void get_all_data();
-    void fill_first_node();
+    Member_strc* fill_first_node();
 };
