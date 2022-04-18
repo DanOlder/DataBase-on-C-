@@ -6,8 +6,6 @@ RecordLabel::RecordLabel(){
 
 RecordLabel::RecordLabel(int id) {             //new constructor added for new nodes
 
-    Form^ fillform = gcnew FormFillR(&data);
-    fillform->Show();
 }
 
 void RecordLabel::get_data(int wanted_id) {
@@ -24,14 +22,18 @@ void RecordLabel::get_all_data() {
     }
 }
 
-void RecordLabel::fill_first_node() {
+RecordLabel_strc* RecordLabel::fill_first_node() {
     if (this->get_id() == 1) {
 
+        return &data;
+        /*
         Form^ fillform = gcnew FormFillR(&data);
         fillform->Show();
+        */
     }
     else {
         MessageBox::Show("The first node's already created","Error");
+        return NULL;
     }
 }
 

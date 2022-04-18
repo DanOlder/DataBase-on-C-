@@ -6,18 +6,6 @@ Band::Band() {
 
 Band::Band(int id) {
 
-    /*
-    Form^ fillform = gcnew FormFillB(&data);
-    fillform->Show();
-    */
-    /*
-    std::cout << "Enter the band name" << std::endl;
-    std::cin >> data.band_name;
-    std::cout << "Enter the year of band forming" << std::endl;
-    std::cin >> data.year_of_forming;
-    std::cout << "Enter the label id for band" << std::endl;
-    std::cin >> data.label_id;
-    */
 }
 
 void Band::get_data(int wanted_id) {
@@ -40,19 +28,7 @@ Band_strc* Band::fill_first_node() {
     if (this == this->tail) {
 
         return &data;
-        /*
-        Form^ fillform = gcnew FormFillB(&data);
-        fillform->Show();
-        */
 
-    /*
-        std::cout << "Enter the band name" << std::endl;
-        std::cin >> data.band_name;
-        std::cout << "Enter the year of band forming" << std::endl;
-        std::cin >> data.year_of_forming;
-        std::cout << "Enter the label id for band" << std::endl;
-        std::cin >> data.label_id;
-        */
     }
     else {
         MessageBox::Show("The first node's already created", "Error");

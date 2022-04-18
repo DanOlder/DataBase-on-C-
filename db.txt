@@ -1,3 +1,18 @@
-1 qwe 1234
-2 kk 9999
-1 2 pupa 1999
+R
+recordL--1996
+recLife--1899
+
+P
+US--California--Los Angeles
+US--Florida--Miami
+
+B
+2--Geez--1997
+2--Beem--2001
+1--Nyard--2011
+
+A
+2--God--2005--10
+2--Life--2006--5
+1--Hunt--2010--14
+

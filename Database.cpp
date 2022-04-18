@@ -100,21 +100,41 @@ void Database::addInfo(int table_num){
             break;
         }
         case P: {//place
+            Place_strc* data;
             if (place_created) {
-                place.add_node();
+                data = place.add_node();
+
+                Form^ fillform = gcnew FormFillP(data);
+                fillform->Show();
+
             }
             else {
-                place.fill_first_node();
+                data = place.fill_first_node();
+                if (data == NULL) return;
+
+                Form^ fillform = gcnew FormFillP(data);
+                fillform->Show();
+
                 place_created = true;
             }
             break;
         }
         case R: {//recordlabel
+            RecordLabel_strc* data;
             if (recordlabel_created) {
-                recordlabel.add_node();
+                data = recordlabel.add_node();
+
+                Form^ fillform = gcnew FormFillR(data);
+                fillform->Show();
+
             }
             else {
-                recordlabel.fill_first_node();
+                data = recordlabel.fill_first_node();
+                if (data == NULL) return;
+
+                Form^ fillform = gcnew FormFillR(data);
+                fillform->Show();
+
                 recordlabel_created = true;
             }
             break;
@@ -143,7 +163,7 @@ void Database::saveInFile()
     //recordlabel -> place -> band -> album -> song -> member -> concert
 
     std::ofstream fout("db.txt");
-
+    std::string delimiter = "--";
 
     if (recordlabel_created) {
         fout << "R\n";
@@ -151,10 +171,10 @@ void Database::saveInFile()
         RecordLabel* temp;
         for (temp = &(this->recordlabel); temp != NULL; temp = temp->next) {
             RecordLabel_strc* data = &(temp->data);
-            fout << temp->get_id();
-            fout << " ";
+            //fout << temp->get_id();
+            //fout << " ";
             fout << data->label_name;
-            fout << " ";
+            fout << delimiter;
             fout << data->year_of_found;
             fout << "\n";
         }
@@ -166,12 +186,12 @@ void Database::saveInFile()
         Place* temp;
         for (temp = &(this->place); temp != NULL; temp = temp->next) {
             Place_strc* data = &(temp->data);
-            fout << temp->get_id();
-            fout << " ";
+            //fout << temp->get_id();
+            //fout << " ";
             fout << data->country;
-            fout << " ";
+            fout << delimiter;
             fout << data->region;
-            fout << " ";
+            fout << delimiter;
             fout << data->city;
             fout << "\n";
         }
@@ -183,12 +203,12 @@ void Database::saveInFile()
         Band* temp;
         for (temp = &(this->band); temp != NULL; temp = temp->next) {
             Band_strc* data = &(temp->data);
-            fout << temp->get_id();
-            fout << " ";
+            //fout << temp->get_id();
+            //fout << " ";
             fout << data->recordLabel_id;
-            fout << " ";
+            fout << delimiter;
             fout << data->band_name;
-            fout << " ";
+            fout << delimiter;
             fout << data->year_of_forming;
             fout << "\n";
         }
@@ -200,14 +220,14 @@ void Database::saveInFile()
         Album* temp;
         for (temp = &(this->album); temp != NULL; temp = temp->next) {
             Album_strc* data = &(temp->data);
-            fout << temp->get_id();
-            fout << " ";
+            //fout << temp->get_id();
+            //fout << " ";
             fout << data->band_id;
-            fout << " ";
+            fout << delimiter;
             fout << data->album_name;
-            fout << " ";
+            fout << delimiter;
             fout << data->release_year;
-            fout << " ";
+            fout << delimiter;
             fout << data->number_of_songs;
             fout << "\n";
         }
@@ -219,14 +239,14 @@ void Database::saveInFile()
         Song* temp;
         for (temp = &(this->song); temp != NULL; temp = temp->next) {
             Song_strc* data = &(temp->data);
-            fout << temp->get_id();
-            fout << " ";
+            //fout << temp->get_id();
+            //fout << " ";
             fout << data->album_id;
-            fout << " ";
+            fout << delimiter;
             fout << data->song_name;
-            fout << " ";
+            fout << delimiter;
             fout << data->genre;
-            fout << " ";
+            fout << delimiter;
             fout << data->is_single;
             fout << "\n";
         }
@@ -238,18 +258,18 @@ void Database::saveInFile()
         Member* temp;
         for (temp = &(this->member); temp != NULL; temp = temp->next) {
             Member_strc* data = &(temp->data);
-            fout << temp->get_id();
-            fout << " ";
+            //fout << temp->get_id();
+            //fout << " ";
             fout << data->band_id;
-            fout << " ";
+            fout << delimiter;
             fout << data->place_id;
-            fout << " ";
+            fout << delimiter;
             fout << data->birth_date;
-            fout << " ";
+            fout << delimiter;
             fout << data->member_name;
-            fout << " ";
+            fout << delimiter;
             fout << data->member_lastname;
-            fout << " ";
+            fout << delimiter;
             fout << data->is_frontman;
             fout << "\n";
         }
@@ -261,12 +281,12 @@ void Database::saveInFile()
         Concert* temp;
         for (temp = &(this->concert); temp != NULL; temp = temp->next) {
             Concert_strc* data = &(temp->data);
-            fout << temp->get_id();
-            fout << " ";
+            //fout << temp->get_id();
+            //fout << " ";
             fout << data->band_id;
-            fout << " ";
+            fout << delimiter;
             fout << data->place_id;
-            fout << " ";
+            fout << delimiter;
             fout << data->concert_date;
             fout << "\n";
         }
@@ -278,4 +298,284 @@ void Database::saveInFile()
 
 void Database::loadFromFile()
 {
+    //recordlabel -> place -> band -> album -> song -> member -> concert
+
+    char switchVar;
+
+    std::ifstream fin("db.txt");
+    std::string str;
+    std::string delimiter = "--";
+
+    while (getline(fin, str)) {
+
+        if (str.length() == 1) {
+            char tempChar = str[0];
+            switch (tempChar)
+            {
+                case 'R': {
+                    switchVar = 'R';
+                    break;
+                }
+                case 'P': {
+                    switchVar = 'P';
+                    break;
+                }
+                case 'B': {
+                    switchVar = 'B';
+                    break;
+                }
+                case 'A': {
+                    switchVar = 'A';
+                    break;
+                }
+                case 'S': {
+                    switchVar = 'S';
+                    break;
+                }
+                case 'M': {
+                    switchVar = 'M';
+                    break;
+                }
+                case 'C': {
+                    switchVar = 'C';
+                    break;
+                }
+            }
+        }
+        else {
+            if (str.length() == 0) continue;
+            switch (switchVar)
+            {
+                case 'R': {
+                    RecordLabel_strc* data;
+                    std::string token;
+                    size_t pos = 0;
+
+                    if (recordlabel_created) {
+                        data = recordlabel.add_node();
+
+
+                        pos = str.find(delimiter);
+                        token = str.substr(0, pos);
+                        data->label_name = token;
+                        str.erase(0, pos + delimiter.length());
+                        
+                        pos = str.find(delimiter);
+                        token = str.substr(0, pos);
+                        data->year_of_found = stoi(token);
+                        str.erase(0, pos + delimiter.length());
+
+
+                    }
+                    else {
+                        data = recordlabel.fill_first_node();
+                        if (data == NULL) return;
+
+                        pos = str.find(delimiter);
+                        token = str.substr(0, pos);
+                        data->label_name = token;
+                        str.erase(0, pos + delimiter.length());
+
+                        pos = str.find(delimiter);
+                        token = str.substr(0, pos);
+                        data->year_of_found = stoi(token);
+                        str.erase(0, pos + delimiter.length());
+
+
+                        recordlabel_created = true;
+                    }
+                    break;
+                }
+                case 'P': {
+                    Place_strc* data;
+                    std::string token;
+                    size_t pos = 0;
+
+                    if (place_created) {
+                        data = place.add_node();
+
+                        pos = str.find(delimiter);
+                        token = str.substr(0, pos);
+                        data->country = token;
+                        str.erase(0, pos + delimiter.length());
+
+                        pos = str.find(delimiter);
+                        token = str.substr(0, pos);
+                        data->region = token;
+                        str.erase(0, pos + delimiter.length());
+
+                        pos = str.find(delimiter);
+                        token = str.substr(0, pos);
+                        data->city = token;
+                        str.erase(0, pos + delimiter.length());
+
+                    }
+                    else {
+                        data = place.fill_first_node();
+                        if (data == NULL) return;
+
+
+                        pos = str.find(delimiter);
+                        token = str.substr(0, pos);
+                        data->country = token;
+                        str.erase(0, pos + delimiter.length());
+
+                        pos = str.find(delimiter);
+                        token = str.substr(0, pos);
+                        data->region = token;
+                        str.erase(0, pos + delimiter.length());
+
+                        pos = str.find(delimiter);
+                        token = str.substr(0, pos);
+                        data->city = token;
+                        str.erase(0, pos + delimiter.length());
+
+
+                        place_created = true;
+                    }
+                    break;
+                }
+                case 'B': {
+                    Band_strc* data;
+                    std::string token;
+                    size_t pos = 0;
+
+                    if (band_created) {
+
+                        data = band.add_node();
+
+
+                        pos = str.find(delimiter);
+                        token = str.substr(0, pos);
+                        data->recordLabel_id = stoi(token);
+                        str.erase(0, pos + delimiter.length());
+
+                        pos = str.find(delimiter);
+                        token = str.substr(0, pos);
+                        data->band_name = token;
+                        str.erase(0, pos + delimiter.length());
+
+                        pos = str.find(delimiter);
+                        token = str.substr(0, pos);
+                        data->year_of_forming = stoi(token);
+                        str.erase(0, pos + delimiter.length());
+
+                    }
+                    else {
+                        if (recordlabel_created) {
+                            data = band.fill_first_node();
+                            if (data == NULL) return;
+
+
+                            pos = str.find(delimiter);
+                            token = str.substr(0, pos);
+                            data->recordLabel_id = stoi(token);
+                            str.erase(0, pos + delimiter.length());
+
+                            pos = str.find(delimiter);
+                            token = str.substr(0, pos);
+                            data->band_name = token;
+                            str.erase(0, pos + delimiter.length());
+
+                            pos = str.find(delimiter);
+                            token = str.substr(0, pos);
+                            data->year_of_forming = stoi(token);
+                            str.erase(0, pos + delimiter.length());
+
+
+                            band_created = true;
+                        }
+                        else {
+                            MessageBox::Show("You need to create a label first", "Error");
+                            return;
+                        }
+                    }
+                    break;
+                }
+                case 'A': {
+                    Album_strc* data;
+                    std::string token;
+                    size_t pos = 0;
+
+                    if (album_created) {
+
+                        data = album.add_node();
+
+
+                        pos = str.find(delimiter);
+                        token = str.substr(0, pos);
+                        data->band_id = stoi(token);
+                        str.erase(0, pos + delimiter.length());
+
+                        pos = str.find(delimiter);
+                        token = str.substr(0, pos);
+                        data->album_name = token;
+                        str.erase(0, pos + delimiter.length());
+
+                        pos = str.find(delimiter);
+                        token = str.substr(0, pos);
+                        data->release_year = stoi(token);
+                        str.erase(0, pos + delimiter.length());
+
+                        pos = str.find(delimiter);
+                        token = str.substr(0, pos);
+                        data->number_of_songs = stoi(token);
+                        str.erase(0, pos + delimiter.length());
+
+
+                    }
+                    else {
+                        if (band_created) {
+
+                            data = album.fill_first_node();
+                            if (data == NULL) return;
+
+
+                            pos = str.find(delimiter);
+                            token = str.substr(0, pos);
+                            data->band_id = stoi(token);
+                            str.erase(0, pos + delimiter.length());
+
+                            pos = str.find(delimiter);
+                            token = str.substr(0, pos);
+                            data->album_name = token;
+                            str.erase(0, pos + delimiter.length());
+
+                            pos = str.find(delimiter);
+                            token = str.substr(0, pos);
+                            data->release_year = stoi(token);
+                            str.erase(0, pos + delimiter.length());
+
+                            pos = str.find(delimiter);
+                            token = str.substr(0, pos);
+                            data->number_of_songs = stoi(token);
+                            str.erase(0, pos + delimiter.length());
+
+
+                            album_created = true;
+                        }
+                        else {
+                            MessageBox::Show("You need to create a band first", "Error");
+                        }
+                    }
+                    break;
+                }
+                case 'S': {
+                    
+                    break;
+                }
+                case 'M': {
+                    
+                    break;
+                }
+                case 'C': {
+                    
+                    break;
+                }
+            }
+        }
+
+    }
+
+    fin.close();
 }
