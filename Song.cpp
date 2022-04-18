@@ -21,16 +21,15 @@ void Song::get_all_data()
 {
 }
 
-void Song::fill_first_node()
+Song_strc* Song::fill_first_node()
 {
     if (this->get_id() == 1) {
 
-        /*
-        Form^ fillform = gcnew FormFillS(&data);
-        fillform->Show();
-        */
+        return &data;
+
     }
     else {
         MessageBox::Show("The first node's already created", "Error");
+        return NULL;
     }
 }

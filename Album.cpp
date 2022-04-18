@@ -35,3 +35,14 @@ Album_strc* Album::fill_first_node()
         return NULL;
     }
 }
+
+int Album::find_id(std::string str) {
+
+    Album* temp;
+    for (temp = this->tail; temp != NULL; temp = temp->next) {
+        if (temp->data.album_name == str) {
+            return temp->get_id();
+        }
+    }
+    return -1;
+}

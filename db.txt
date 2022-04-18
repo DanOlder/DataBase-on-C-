@@ -16,3 +16,8 @@ A
 2--Life--2006--5
 1--Hunt--2010--14
 
+S
+3--Hunter--Metal--Yes
+3--Blood--Metal--No
+1--Angel--Punk--Yes
+

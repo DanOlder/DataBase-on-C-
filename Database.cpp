@@ -140,12 +140,23 @@ void Database::addInfo(int table_num){
             break;
         }
         case S: {//song
+            Song_strc* data;
             if (song_created) {
-                song.add_node();
+
+                data = song.add_node();
+
+                Form^ fillform = gcnew FormFillS(data, this);
+                fillform->Show();
+
             }
             else {
                 if (album_created) {
-                    song.fill_first_node();
+                    data = song.fill_first_node();
+                    if (data == NULL) return;
+
+                    Form^ fillform = gcnew FormFillS(data, this);
+                    fillform->Show();
+
                     song_created = true;
                 }
                 else {
@@ -561,7 +572,69 @@ void Database::loadFromFile()
                     break;
                 }
                 case 'S': {
-                    
+                    Song_strc* data;
+                    std::string token;
+                    size_t pos = 0;
+
+                    if (song_created) {
+
+                        data = song.add_node();
+
+
+                        pos = str.find(delimiter);
+                        token = str.substr(0, pos);
+                        data->album_id = stoi(token);
+                        str.erase(0, pos + delimiter.length());
+
+                        pos = str.find(delimiter);
+                        token = str.substr(0, pos);
+                        data->song_name = token;
+                        str.erase(0, pos + delimiter.length());
+
+                        pos = str.find(delimiter);
+                        token = str.substr(0, pos);
+                        data->genre = token;
+                        str.erase(0, pos + delimiter.length());
+
+                        pos = str.find(delimiter);
+                        token = str.substr(0, pos);
+                        data->is_single = token;
+                        str.erase(0, pos + delimiter.length());
+
+                    }
+                    else {
+                        if (album_created) {
+                            data = song.fill_first_node();
+                            if (data == NULL) return;
+
+
+                            pos = str.find(delimiter);
+                            token = str.substr(0, pos);
+                            data->album_id = stoi(token);
+                            str.erase(0, pos + delimiter.length());
+
+                            pos = str.find(delimiter);
+                            token = str.substr(0, pos);
+                            data->song_name = token;
+                            str.erase(0, pos + delimiter.length());
+
+                            pos = str.find(delimiter);
+                            token = str.substr(0, pos);
+                            data->genre = token;
+                            str.erase(0, pos + delimiter.length());
+
+                            pos = str.find(delimiter);
+                            token = str.substr(0, pos);
+                            data->is_single = token;
+                            str.erase(0, pos + delimiter.length());
+
+
+                            song_created = true;
+                        }
+                        else {
+                            MessageBox::Show("You need to create an album first", "Error");
+                        }
+                    }
                     break;
                 }
                 case 'M': {
