@@ -1,0 +1,5 @@
+      Songs from Album "Hunt"
+Name:   Genre:   Single:
+Hunter   Metal      Yes
+Blood   Metal      No
+Bow   Rock      No

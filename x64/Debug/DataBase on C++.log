@@ -1,5 +1,8 @@
 ﻿  Album.cpp
   Band.cpp
+  ChooseConcertsForm.cpp
+  ChooseMembersForm.cpp
+  ChooseSongsForm.cpp
   Concert.cpp
   Database.cpp
   FormAdd.cpp
@@ -15,6 +18,8 @@
   Member.cpp
   Place.cpp
   RecordLabel.cpp
+  Generating Code...
+  Compiling...
   Song.cpp
   Generating Code...
   Album.obj : MSIL module encountered; incremental linking is disabled for MSIL; performing full link

@@ -113,6 +113,9 @@
   <ItemGroup>
     <ClCompile Include="Album.cpp" />
     <ClCompile Include="Band.cpp" />
+    <ClCompile Include="ChooseConcertsForm.cpp" />
+    <ClCompile Include="ChooseMembersForm.cpp" />
+    <ClCompile Include="ChooseSongsForm.cpp" />
     <ClCompile Include="Concert.cpp" />
     <ClCompile Include="Database.cpp" />
     <ClCompile Include="FormAdd.cpp" />
@@ -128,12 +131,24 @@
     <ClCompile Include="Member.cpp" />
     <ClCompile Include="Place.cpp" />
     <ClCompile Include="RecordLabel.cpp" />
+    <ClCompile Include="ShowConcertsForm.cpp" />
+    <ClCompile Include="ShowMembersForm.cpp" />
+    <ClCompile Include="ShowSongsForm.cpp" />
     <ClCompile Include="Song.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Album.hpp" />
     <ClInclude Include="Band.hpp" />
     <ClInclude Include="BigHeader.hpp" />
+    <ClInclude Include="ChooseConcertsForm.hpp">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="ChooseMembersForm.hpp">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="ChooseSongsForm.hpp">
+      <FileType>CppForm</FileType>
+    </ClInclude>
     <ClInclude Include="Concert.hpp" />
     <ClInclude Include="Database.hpp" />
     <ClInclude Include="FormAdd.hpp">
@@ -180,6 +195,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="ChooseConcertsForm.resx">
+      <DependentUpon>ChooseConcertsForm.hpp</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ChooseMembersForm.resx">
+      <DependentUpon>ChooseMembersForm.hpp</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ChooseSongsForm.resx">
+      <DependentUpon>ChooseSongsForm.hpp</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormAdd.resx">
       <DependentUpon>FormAdd.hpp</DependentUpon>
     </EmbeddedResource>

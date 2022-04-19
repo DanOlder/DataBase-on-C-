@@ -1,3 +1,6 @@
+  DataBaseonC.ChooseConcertsForm.resources - Embedded, ContainedInManifestFile, 
+  DataBaseonC.ChooseMembersForm.resources - Embedded, ContainedInManifestFile, 
+  DataBaseonC.ChooseSongsForm.resources - Embedded, ContainedInManifestFile, 
   DataBaseonC.FormAdd.resources - Embedded, ContainedInManifestFile, 
   DataBaseonC.FormFillA.resources - Embedded, ContainedInManifestFile, 
   DataBaseonC.FormFillB.resources - Embedded, ContainedInManifestFile, 
@@ -23,6 +26,15 @@ Assembly System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=
 	hash=None, flags=None
 Assembly System.Xml, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089: 
 	hash=None, flags=None
+Class DataBaseonC.ChooseConcertsForm: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+  :System.Windows.Forms.Form
+    Void .ctor(System.Windows.Forms.Form, Database*): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+Class DataBaseonC.ChooseMembersForm: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+  :System.Windows.Forms.Form
+    Void .ctor(System.Windows.Forms.Form, Database*): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+Class DataBaseonC.ChooseSongsForm: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+  :System.Windows.Forms.Form
+    Void .ctor(System.Windows.Forms.Form, Database*): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
 Class DataBaseonC.FormShow: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
   :System.Windows.Forms.Form
     Void .ctor(System.Windows.Forms.Form, Database*): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
@@ -53,3 +65,12 @@ Class DataBaseonC.FormAdd: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
 Class DataBaseonC.MainForm: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
   :System.Windows.Forms.Form
     Void .ctor(Database*): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+Class DataBaseonC.ShowConcertsForm: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+  :System.Windows.Forms.Form
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+Class DataBaseonC.ShowMembersForm: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+  :System.Windows.Forms.Form
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+Class DataBaseonC.ShowSongsForm: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+  :System.Windows.Forms.Form
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName

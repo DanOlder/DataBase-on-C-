@@ -81,6 +81,7 @@ namespace DataBaseonC {
 			this->btnShow3->TabIndex = 7;
 			this->btnShow3->Text = L"Show Band Members";
 			this->btnShow3->UseVisualStyleBackColor = true;
+			this->btnShow3->Click += gcnew System::EventHandler(this, &FormShow::btnShow3_Click);
 			// 
 			// btnShow2
 			// 
@@ -90,6 +91,7 @@ namespace DataBaseonC {
 			this->btnShow2->TabIndex = 6;
 			this->btnShow2->Text = L"Show Album Songs";
 			this->btnShow2->UseVisualStyleBackColor = true;
+			this->btnShow2->Click += gcnew System::EventHandler(this, &FormShow::btnShow2_Click);
 			// 
 			// btnShow1
 			// 
@@ -99,6 +101,7 @@ namespace DataBaseonC {
 			this->btnShow1->TabIndex = 5;
 			this->btnShow1->Text = L"Show Concerts";
 			this->btnShow1->UseVisualStyleBackColor = true;
+			this->btnShow1->Click += gcnew System::EventHandler(this, &FormShow::btnShow1_Click);
 			// 
 			// FormShow
 			// 
@@ -120,5 +123,23 @@ namespace DataBaseonC {
 		this->Close();
 		mainForm->Show();
 	}
-	};
+	private: System::Void btnShow1_Click(System::Object^ sender, System::EventArgs^ e) {
+
+		Form^ frm = gcnew ChooseConcertsForm(this, database);
+		frm->Show();
+		//this->Hide();
+	}
+private: System::Void btnShow2_Click(System::Object^ sender, System::EventArgs^ e) {
+
+	Form^ frm = gcnew ChooseSongsForm(this, database);
+	frm->Show();
+	//this->Hide();
+}
+private: System::Void btnShow3_Click(System::Object^ sender, System::EventArgs^ e) {
+
+	Form^ frm = gcnew ChooseMembersForm(this, database);
+	frm->Show();
+	//this->Hide();
+}
+};
 }

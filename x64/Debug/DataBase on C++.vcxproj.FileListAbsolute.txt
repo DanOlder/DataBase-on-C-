@@ -1,5 +1,8 @@
 C:\Users\Daniel af\source\repos\DataBase on C++\x64\Debug\DataBase on C++.vcxproj.AssemblyReference.cache
 C:\Users\Daniel af\source\repos\DataBase on C++\x64\Debug\DataBase on C++.vcxproj.SuggestedBindingRedirects.cache
+C:\Users\Daniel af\source\repos\DataBase on C++\x64\Debug\DataBaseonC.ChooseConcertsForm.resources
+C:\Users\Daniel af\source\repos\DataBase on C++\x64\Debug\DataBaseonC.ChooseMembersForm.resources
+C:\Users\Daniel af\source\repos\DataBase on C++\x64\Debug\DataBaseonC.ChooseSongsForm.resources
 C:\Users\Daniel af\source\repos\DataBase on C++\x64\Debug\DataBaseonC.FormAdd.resources
 C:\Users\Daniel af\source\repos\DataBase on C++\x64\Debug\DataBaseonC.FormFillA.resources
 C:\Users\Daniel af\source\repos\DataBase on C++\x64\Debug\DataBaseonC.FormFillB.resources

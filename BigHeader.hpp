@@ -31,6 +31,11 @@ enum {
 #include "Song.hpp"
 
 #include "Database.hpp"
+
+#include "ChooseConcertsForm.hpp"
+#include "ChooseMembersForm.hpp"
+#include "ChooseSongsForm.hpp"
+
 #include "FormShow.hpp"
 
 #include "FormFillA.hpp"

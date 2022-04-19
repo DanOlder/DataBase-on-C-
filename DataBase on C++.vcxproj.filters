@@ -84,6 +84,24 @@
     <ClCompile Include="FormAdd.cpp">
       <Filter>Source Files\MainForms</Filter>
     </ClCompile>
+    <ClCompile Include="ShowConcertsForm.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ShowMembersForm.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ShowSongsForm.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ChooseConcertsForm.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ChooseMembersForm.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ChooseSongsForm.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="MainForm.hpp">
@@ -145,6 +163,15 @@
     </ClInclude>
     <ClInclude Include="Database.hpp">
       <Filter>Header Files\DB</Filter>
+    </ClInclude>
+    <ClInclude Include="ChooseConcertsForm.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ChooseMembersForm.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ChooseSongsForm.hpp">
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

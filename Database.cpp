@@ -195,7 +195,7 @@ void Database::saveInFile()
     //queue:
     //recordlabel -> place -> band -> album -> song -> member -> concert
 
-    std::ofstream fout("db.txt");
+    std::ofstream fout("txts/db.txt");
     std::string delimiter = "--";
 
     if (recordlabel_created) {
@@ -335,7 +335,7 @@ void Database::loadFromFile()
 
     char switchVar;
 
-    std::ifstream fin("db.txt");
+    std::ifstream fin("txts/db.txt");
     std::string str;
     std::string delimiter = "--";
 
