@@ -1,4 +1,4 @@
-      Members of "Nyard"
+      Members of "Beem"
 Name:       Lastname:       Date of Birth:       Is frontman:
-John        Hill            Los Angeles              Yes
-Will        Roll            Miami              No
+Alex        Dark            Los Angeles              Yes
+Jake        Toe            Mexico              No

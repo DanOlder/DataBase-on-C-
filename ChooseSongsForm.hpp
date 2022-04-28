@@ -17,6 +17,10 @@ namespace DataBaseonC {
 	public:
 		ChooseSongsForm(Form^ tempForm, Database* dbTemp)
 		{
+			this->MaximizeBox = false;
+			this->MinimizeBox = false;
+			this->ControlBox = false;
+
 			showForm = tempForm;
 			db = dbTemp;
 			InitializeComponent();
@@ -193,7 +197,7 @@ private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e
 		}
 	}
 	fout.close();
-
+	system("notepad.exe txts/Song Report.txt");
 
 	MessageBox::Show("Data's been sucsessfully reported", "Done");
 	this->Close();

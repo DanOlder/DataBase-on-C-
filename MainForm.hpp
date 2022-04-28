@@ -17,6 +17,10 @@ namespace DataBaseonC {
 	public:
 		MainForm(Database* db)
 		{
+			this->MaximizeBox = false;
+			this->MinimizeBox = false;
+			this->ControlBox = false;
+
 			database = db;
 			InitializeComponent();
 		}

@@ -17,6 +17,10 @@ namespace DataBaseonC {
 	public:
 		FormFillM(Member_strc* dataTemp, Database* dbTemp)
 		{
+			this->MaximizeBox = false;
+			this->MinimizeBox = false;
+			this->ControlBox = false;
+
 			data = dataTemp;
 			db = dbTemp;
 			InitializeComponent();

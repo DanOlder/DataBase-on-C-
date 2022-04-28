@@ -17,6 +17,10 @@ namespace DataBaseonC {
 	public:
 		FormFillA(Album_strc* dataTemp, Database* bdTemp)
 		{
+			this->MaximizeBox = false;
+			this->MinimizeBox = false;
+			this->ControlBox = false;
+
 			data = dataTemp;
 			db = bdTemp;
 			InitializeComponent();

@@ -17,6 +17,10 @@ namespace DataBaseonC {
 	public:
 		FormFillP(Place_strc* dataTemp)
 		{
+			this->MaximizeBox = false;
+			this->MinimizeBox = false;
+			this->ControlBox = false;
+
 			data = dataTemp;
 			InitializeComponent();
 			//

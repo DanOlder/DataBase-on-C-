@@ -17,6 +17,10 @@ namespace DataBaseonC {
 	public:
 		FormAdd(Form^ tempForm, Database* db)
 		{
+			this->MaximizeBox = false;
+			this->MinimizeBox = false;
+			this->ControlBox = false;
+
 			mainForm = tempForm;
 			database = db;
 			InitializeComponent();
@@ -173,6 +177,7 @@ namespace DataBaseonC {
 			this->Controls->Add(this->btnAdd1);
 			this->Name = L"FormAdd";
 			this->Text = L"FormAdd";
+			this->Load += gcnew System::EventHandler(this, &FormAdd::FormAdd_Load);
 			this->ResumeLayout(false);
 
 		}
@@ -211,6 +216,8 @@ private: System::Void btnAdd6_Click(System::Object^ sender, System::EventArgs^ e
 private: System::Void btnAdd7_Click(System::Object^ sender, System::EventArgs^ e) {
 
 	database->addInfo(S);
+}
+private: System::Void FormAdd_Load(System::Object^ sender, System::EventArgs^ e) {
 }
 };
 }

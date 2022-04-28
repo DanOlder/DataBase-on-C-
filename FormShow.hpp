@@ -17,6 +17,10 @@ namespace DataBaseonC {
 	public:
 		FormShow(Form^ tempForm, Database* db)
 		{
+			this->MaximizeBox = false;
+			this->MinimizeBox = false;
+			this->ControlBox = false;
+
 			mainForm = tempForm;
 			database = db;
 			InitializeComponent();
@@ -114,6 +118,7 @@ namespace DataBaseonC {
 			this->Controls->Add(this->btnShow1);
 			this->Name = L"FormShow";
 			this->Text = L"FormShow";
+			this->Load += gcnew System::EventHandler(this, &FormShow::FormShow_Load);
 			this->ResumeLayout(false);
 
 		}
@@ -140,6 +145,8 @@ private: System::Void btnShow3_Click(System::Object^ sender, System::EventArgs^ 
 	Form^ frm = gcnew ChooseMembersForm(this, database);
 	frm->Show();
 	//this->Hide();
+}
+private: System::Void FormShow_Load(System::Object^ sender, System::EventArgs^ e) {
 }
 };
 }

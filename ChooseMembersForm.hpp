@@ -17,6 +17,10 @@ namespace DataBaseonC {
 	public:
 		ChooseMembersForm(Form^ tempForm, Database* dbTemp)
 		{
+			this->MaximizeBox = false;
+			this->MinimizeBox = false;
+			this->ControlBox = false;
+
 			showForm = tempForm;
 			db = dbTemp;
 			InitializeComponent();
@@ -154,7 +158,7 @@ namespace DataBaseonC {
 			}
 		}
 		fout.close();
-
+		system("notepad.exe txts/Members Report.txt");
 
 		MessageBox::Show("Data's been sucsessfully reported", "Done");
 		this->Close();
