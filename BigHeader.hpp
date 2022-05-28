@@ -16,6 +16,7 @@ enum {
 #include <iostream>
 #include <string>
 #include <fstream>
+#include <sstream>
 
 //for using std and system strings incompatible
 #include <msclr\marshal_cppstd.h>

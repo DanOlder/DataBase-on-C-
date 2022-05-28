@@ -28,6 +28,9 @@ public:
 
 	template<typename Strc, typename FormFill, typename Table>
 	void AddInfoTemplate(bool*, bool, System::String^, Table*);
+	
+	template<typename ElemType>
+	void putInfo(ElemType*, std::string*, std::string);
 };
 
 
@@ -58,4 +61,48 @@ inline void Database::AddInfoTemplate(bool* isCreated, bool parentsCreated, Syst
 			MessageBox::Show(errorText, "Error");
 		}
 	}
+}
+
+template <typename T>
+T ConvertString(const std::string& data)
+{
+	if (!data.empty())
+	{
+		T ret;
+		std::istringstream iss(data);
+		if (data.find("0x") != std::string::npos)
+		{
+			iss >> std::hex >> ret;
+		}
+		else
+		{
+			iss >> std::dec >> ret;
+		}
+
+		if (iss.fail())
+		{
+			std::cout << "Convert error: cannot convert string '" << data << "' to value" << std::endl;
+			return T();
+		}
+		return ret;
+	}
+	return T();
+}
+
+template<typename ElemType>
+void Database::putInfo(ElemType* elem, std::string* str, std::string delimiter) {
+	std::string token;
+	size_t pos;
+
+	pos = str->find(delimiter);
+	token = str->substr(0, pos);
+	if (typeid(*elem) == typeid(token)) {
+
+		*elem = ConvertString<ElemType>(token);
+	}
+	else if (typeid(ElemType) == typeid(int)) {
+		*elem = stoi(token);
+	}
+	
+	str->erase(0, pos + delimiter.length());
 }

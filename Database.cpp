@@ -246,39 +246,26 @@ void Database::loadFromFile()
             {
                 case 'R': {
                     RecordLabel_strc* data;
-                    std::string token;
-                    size_t pos = 0;
 
                     if (recordlabel_created) {
                         data = recordlabel.add_node();
-
-
-                        pos = str.find(delimiter);
-                        token = str.substr(0, pos);
-                        data->name = token;
-                        str.erase(0, pos + delimiter.length());
+     
+                        putInfo<std::string>
+                            (&(data->name),&str,delimiter);
                         
-                        pos = str.find(delimiter);
-                        token = str.substr(0, pos);
-                        data->year_of_found = stoi(token);
-                        str.erase(0, pos + delimiter.length());
-
-
+                        putInfo<int>
+                            (&(data->year_of_found), &str, delimiter);
                     }
                     else {
                         data = recordlabel.fill_first_node();
                         if (data == NULL) return;
 
-                        pos = str.find(delimiter);
-                        token = str.substr(0, pos);
-                        data->name = token;
-                        str.erase(0, pos + delimiter.length());
 
-                        pos = str.find(delimiter);
-                        token = str.substr(0, pos);
-                        data->year_of_found = stoi(token);
-                        str.erase(0, pos + delimiter.length());
+                        putInfo<std::string>
+                            (&(data->name), &str, delimiter);
 
+                        putInfo<int>
+                            (&(data->year_of_found), &str, delimiter);
 
                         recordlabel_created = true;
                     }
@@ -286,26 +273,18 @@ void Database::loadFromFile()
                 }
                 case 'P': {
                     Place_strc* data;
-                    std::string token;
-                    size_t pos = 0;
 
                     if (place_created) {
                         data = place.add_node();
 
-                        pos = str.find(delimiter);
-                        token = str.substr(0, pos);
-                        data->country = token;
-                        str.erase(0, pos + delimiter.length());
+                        putInfo<std::string>
+                            (&(data->country), &str, delimiter);
 
-                        pos = str.find(delimiter);
-                        token = str.substr(0, pos);
-                        data->region = token;
-                        str.erase(0, pos + delimiter.length());
+                        putInfo<std::string>
+                            (&(data->region), &str, delimiter);
 
-                        pos = str.find(delimiter);
-                        token = str.substr(0, pos);
-                        data->name = token;
-                        str.erase(0, pos + delimiter.length());
+                        putInfo<std::string>
+                            (&(data->name), &str, delimiter);
 
                     }
                     else {
@@ -313,21 +292,14 @@ void Database::loadFromFile()
                         if (data == NULL) return;
 
 
-                        pos = str.find(delimiter);
-                        token = str.substr(0, pos);
-                        data->country = token;
-                        str.erase(0, pos + delimiter.length());
+                        putInfo<std::string>
+                            (&(data->country), &str, delimiter);
 
-                        pos = str.find(delimiter);
-                        token = str.substr(0, pos);
-                        data->region = token;
-                        str.erase(0, pos + delimiter.length());
+                        putInfo<std::string>
+                            (&(data->region), &str, delimiter);
 
-                        pos = str.find(delimiter);
-                        token = str.substr(0, pos);
-                        data->name = token;
-                        str.erase(0, pos + delimiter.length());
-
+                        putInfo<std::string>
+                            (&(data->name), &str, delimiter);
 
                         place_created = true;
                     }
@@ -335,51 +307,33 @@ void Database::loadFromFile()
                 }
                 case 'B': {
                     Band_strc* data;
-                    std::string token;
-                    size_t pos = 0;
 
                     if (band_created) {
 
                         data = band.add_node();
 
+                        putInfo<int>
+                            (&(data->recordLabel_id), &str, delimiter);
 
-                        pos = str.find(delimiter);
-                        token = str.substr(0, pos);
-                        data->recordLabel_id = stoi(token);
-                        str.erase(0, pos + delimiter.length());
+                        putInfo<std::string>
+                            (&(data->name), &str, delimiter);
 
-                        pos = str.find(delimiter);
-                        token = str.substr(0, pos);
-                        data->name = token;
-                        str.erase(0, pos + delimiter.length());
-
-                        pos = str.find(delimiter);
-                        token = str.substr(0, pos);
-                        data->year_of_forming = stoi(token);
-                        str.erase(0, pos + delimiter.length());
-
+                        putInfo<int>
+                            (&(data->year_of_forming), &str, delimiter);
                     }
                     else {
                         if (recordlabel_created) {
                             data = band.fill_first_node();
                             if (data == NULL) return;
 
+                            putInfo<int>
+                                (&(data->recordLabel_id), &str, delimiter);
 
-                            pos = str.find(delimiter);
-                            token = str.substr(0, pos);
-                            data->recordLabel_id = stoi(token);
-                            str.erase(0, pos + delimiter.length());
+                            putInfo<std::string>
+                                (&(data->name), &str, delimiter);
 
-                            pos = str.find(delimiter);
-                            token = str.substr(0, pos);
-                            data->name = token;
-                            str.erase(0, pos + delimiter.length());
-
-                            pos = str.find(delimiter);
-                            token = str.substr(0, pos);
-                            data->year_of_forming = stoi(token);
-                            str.erase(0, pos + delimiter.length());
-
+                            putInfo<int>
+                                (&(data->year_of_forming), &str, delimiter);
 
                             band_created = true;
                         }
@@ -392,34 +346,22 @@ void Database::loadFromFile()
                 }
                 case 'A': {
                     Album_strc* data;
-                    std::string token;
-                    size_t pos = 0;
 
                     if (album_created) {
 
                         data = album.add_node();
 
+                        putInfo<int>
+                            (&(data->band_id), &str, delimiter);
 
-                        pos = str.find(delimiter);
-                        token = str.substr(0, pos);
-                        data->band_id = stoi(token);
-                        str.erase(0, pos + delimiter.length());
+                        putInfo<std::string>
+                            (&(data->name), &str, delimiter);
 
-                        pos = str.find(delimiter);
-                        token = str.substr(0, pos);
-                        data->name = token;
-                        str.erase(0, pos + delimiter.length());
+                        putInfo<int>
+                            (&(data->release_year), &str, delimiter);
 
-                        pos = str.find(delimiter);
-                        token = str.substr(0, pos);
-                        data->release_year = stoi(token);
-                        str.erase(0, pos + delimiter.length());
-
-                        pos = str.find(delimiter);
-                        token = str.substr(0, pos);
-                        data->number_of_songs = stoi(token);
-                        str.erase(0, pos + delimiter.length());
-
+                        putInfo<int>
+                            (&(data->number_of_songs), &str, delimiter);
 
                     }
                     else {
@@ -428,27 +370,17 @@ void Database::loadFromFile()
                             data = album.fill_first_node();
                             if (data == NULL) return;
 
+                            putInfo<int>
+                                (&(data->band_id), &str, delimiter);
 
-                            pos = str.find(delimiter);
-                            token = str.substr(0, pos);
-                            data->band_id = stoi(token);
-                            str.erase(0, pos + delimiter.length());
+                            putInfo<std::string>
+                                (&(data->name), &str, delimiter);
 
-                            pos = str.find(delimiter);
-                            token = str.substr(0, pos);
-                            data->name = token;
-                            str.erase(0, pos + delimiter.length());
+                            putInfo<int>
+                                (&(data->release_year), &str, delimiter);
 
-                            pos = str.find(delimiter);
-                            token = str.substr(0, pos);
-                            data->release_year = stoi(token);
-                            str.erase(0, pos + delimiter.length());
-
-                            pos = str.find(delimiter);
-                            token = str.substr(0, pos);
-                            data->number_of_songs = stoi(token);
-                            str.erase(0, pos + delimiter.length());
-
+                            putInfo<int>
+                                (&(data->number_of_songs), &str, delimiter);
 
                             album_created = true;
                         }
@@ -460,33 +392,22 @@ void Database::loadFromFile()
                 }
                 case 'S': {
                     Song_strc* data;
-                    std::string token;
-                    size_t pos = 0;
 
                     if (song_created) {
 
                         data = song.add_node();
 
+                        putInfo<int>
+                            (&(data->album_id), &str, delimiter);
 
-                        pos = str.find(delimiter);
-                        token = str.substr(0, pos);
-                        data->album_id = stoi(token);
-                        str.erase(0, pos + delimiter.length());
+                        putInfo<std::string>
+                            (&(data->name), &str, delimiter);
 
-                        pos = str.find(delimiter);
-                        token = str.substr(0, pos);
-                        data->name = token;
-                        str.erase(0, pos + delimiter.length());
+                        putInfo<std::string>
+                            (&(data->genre), &str, delimiter);
 
-                        pos = str.find(delimiter);
-                        token = str.substr(0, pos);
-                        data->genre = token;
-                        str.erase(0, pos + delimiter.length());
-
-                        pos = str.find(delimiter);
-                        token = str.substr(0, pos);
-                        data->is_single = token;
-                        str.erase(0, pos + delimiter.length());
+                        putInfo<std::string>
+                            (&(data->is_single), &str, delimiter);
 
                     }
                     else {
@@ -494,27 +415,17 @@ void Database::loadFromFile()
                             data = song.fill_first_node();
                             if (data == NULL) return;
 
+                            putInfo<int>
+                                (&(data->album_id), &str, delimiter);
 
-                            pos = str.find(delimiter);
-                            token = str.substr(0, pos);
-                            data->album_id = stoi(token);
-                            str.erase(0, pos + delimiter.length());
+                            putInfo<std::string>
+                                (&(data->name), &str, delimiter);
 
-                            pos = str.find(delimiter);
-                            token = str.substr(0, pos);
-                            data->name = token;
-                            str.erase(0, pos + delimiter.length());
+                            putInfo<std::string>
+                                (&(data->genre), &str, delimiter);
 
-                            pos = str.find(delimiter);
-                            token = str.substr(0, pos);
-                            data->genre = token;
-                            str.erase(0, pos + delimiter.length());
-
-                            pos = str.find(delimiter);
-                            token = str.substr(0, pos);
-                            data->is_single = token;
-                            str.erase(0, pos + delimiter.length());
-
+                            putInfo<std::string>
+                                (&(data->is_single), &str, delimiter);
 
                             song_created = true;
                         }
@@ -526,42 +437,28 @@ void Database::loadFromFile()
                 }
                 case 'M': {
                     Member_strc* data;
-                    std::string token;
-                    size_t pos = 0;
 
                     if (member_created) {
 
                         data = member.add_node();
 
-                        pos = str.find(delimiter);
-                        token = str.substr(0, pos);
-                        data->band_id = stoi(token);
-                        str.erase(0, pos + delimiter.length());
+                        putInfo<int>
+                            (&(data->band_id), &str, delimiter);
 
-                        pos = str.find(delimiter);
-                        token = str.substr(0, pos);
-                        data->place_id = stoi(token);
-                        str.erase(0, pos + delimiter.length());
+                        putInfo<int>
+                            (&(data->place_id), &str, delimiter);
 
-                        pos = str.find(delimiter);
-                        token = str.substr(0, pos);
-                        data->birth_date = token;
-                        str.erase(0, pos + delimiter.length());
+                        putInfo<std::string>
+                            (&(data->birth_date), &str, delimiter);
 
-                        pos = str.find(delimiter);
-                        token = str.substr(0, pos);
-                        data->name = token;
-                        str.erase(0, pos + delimiter.length());
+                        putInfo<std::string>
+                            (&(data->name), &str, delimiter);
 
-                        pos = str.find(delimiter);
-                        token = str.substr(0, pos);
-                        data->lastname = token;
-                        str.erase(0, pos + delimiter.length());
+                        putInfo<std::string>
+                            (&(data->lastname), &str, delimiter);
 
-                        pos = str.find(delimiter);
-                        token = str.substr(0, pos);
-                        data->is_frontman = token;
-                        str.erase(0, pos + delimiter.length());
+                        putInfo<std::string>
+                            (&(data->is_frontman), &str, delimiter);
 
                     }
                     else {
@@ -569,35 +466,23 @@ void Database::loadFromFile()
                             data = member.fill_first_node();
                             if (data == NULL) return;
 
-                            pos = str.find(delimiter);
-                            token = str.substr(0, pos);
-                            data->band_id = stoi(token);
-                            str.erase(0, pos + delimiter.length());
+                            putInfo<int>
+                                (&(data->band_id), &str, delimiter);
 
-                            pos = str.find(delimiter);
-                            token = str.substr(0, pos);
-                            data->place_id = stoi(token);
-                            str.erase(0, pos + delimiter.length());
+                            putInfo<int>
+                                (&(data->place_id), &str, delimiter);
 
-                            pos = str.find(delimiter);
-                            token = str.substr(0, pos);
-                            data->birth_date = token;
-                            str.erase(0, pos + delimiter.length());
+                            putInfo<std::string>
+                                (&(data->birth_date), &str, delimiter);
 
-                            pos = str.find(delimiter);
-                            token = str.substr(0, pos);
-                            data->name = token;
-                            str.erase(0, pos + delimiter.length());
+                            putInfo<std::string>
+                                (&(data->name), &str, delimiter);
 
-                            pos = str.find(delimiter);
-                            token = str.substr(0, pos);
-                            data->lastname = token;
-                            str.erase(0, pos + delimiter.length());
+                            putInfo<std::string>
+                                (&(data->lastname), &str, delimiter);
 
-                            pos = str.find(delimiter);
-                            token = str.substr(0, pos);
-                            data->is_frontman = token;
-                            str.erase(0, pos + delimiter.length());
+                            putInfo<std::string>
+                                (&(data->is_frontman), &str, delimiter);
 
                             member_created = true;
                         }
@@ -609,27 +494,19 @@ void Database::loadFromFile()
                 }
                 case 'C': {
                     Concert_strc* data;
-                    std::string token;
-                    size_t pos = 0;
 
                     if (concert_created) {
 
                         data = concert.add_node();
 
-                        pos = str.find(delimiter);
-                        token = str.substr(0, pos);
-                        data->band_id = stoi(token);
-                        str.erase(0, pos + delimiter.length());
+                        putInfo<int>
+                            (&(data->band_id), &str, delimiter);
 
-                        pos = str.find(delimiter);
-                        token = str.substr(0, pos);
-                        data->place_id = stoi(token);
-                        str.erase(0, pos + delimiter.length());
+                        putInfo<int>
+                            (&(data->place_id), &str, delimiter);
 
-                        pos = str.find(delimiter);
-                        token = str.substr(0, pos);
-                        data->concert_date = token;
-                        str.erase(0, pos + delimiter.length());
+                        putInfo<std::string>
+                            (&(data->concert_date), &str, delimiter);
 
                     }
                     else {
@@ -637,20 +514,14 @@ void Database::loadFromFile()
                             data = concert.fill_first_node();
                             if (data == NULL) return;
 
-                            pos = str.find(delimiter);
-                            token = str.substr(0, pos);
-                            data->band_id = stoi(token);
-                            str.erase(0, pos + delimiter.length());
+                            putInfo<int>
+                                (&(data->band_id), &str, delimiter);
 
-                            pos = str.find(delimiter);
-                            token = str.substr(0, pos);
-                            data->place_id = stoi(token);
-                            str.erase(0, pos + delimiter.length());
+                            putInfo<int>
+                                (&(data->place_id), &str, delimiter);
 
-                            pos = str.find(delimiter);
-                            token = str.substr(0, pos);
-                            data->concert_date = token;
-                            str.erase(0, pos + delimiter.length());
+                            putInfo<std::string>
+                                (&(data->concert_date), &str, delimiter);
 
                             concert_created = true;
                         }

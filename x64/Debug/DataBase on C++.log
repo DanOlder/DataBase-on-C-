@@ -1,26 +1,3 @@
-﻿  Album.cpp
-  Band.cpp
-  ChooseConcertsForm.cpp
-  ChooseMembersForm.cpp
-  ChooseSongsForm.cpp
-  Concert.cpp
-  Database.cpp
-  FormAdd.cpp
-  FormFillA.cpp
-  FormFillB.cpp
-  FormFillC.cpp
-  FormFillM.cpp
-  FormFillP.cpp
-  FormFillR.cpp
-  FormFillS.cpp
-  FormShow.cpp
-  MainForm.cpp
-  Member.cpp
-  Place.cpp
-  RecordLabel.cpp
-  Generating Code...
-  Compiling...
-  Song.cpp
-  Generating Code...
+﻿  Database.cpp
   Album.obj : MSIL module encountered; incremental linking is disabled for MSIL; performing full link
   DataBase on C++.vcxproj -> C:\Users\Daniel af\source\repos\DataBase on C++\x64\Debug\DataBase on C++.exe
