@@ -1,5 +1,5 @@
-      Songs from Album "Hunt"
+      Songs from Album "God"
 Name:   Genre:   Single:
-Hunter   Metal      Yes
-Blood   Metal      No
-Bow   Rock      No
+God   Punk      Yes
+Angel   Punk      Yes
+Intro   Electro      No

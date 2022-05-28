@@ -199,7 +199,7 @@ namespace DataBaseonC {
 
 		Album* temp;
 		for (temp = &(db->album); temp != NULL; temp = temp->next) {
-			comboBox1->Items->Add(context.marshal_as<String^>(temp->data.album_name));
+			comboBox1->Items->Add(context.marshal_as<String^>(temp->data.name));
 		}
 
 	}
@@ -215,7 +215,7 @@ namespace DataBaseonC {
 		}
 
 		data->album_id = findedId;
-		data->song_name = context.marshal_as<std::string>(textBox2->Text);
+		data->name = context.marshal_as<std::string>(textBox2->Text);
 		data->genre = context.marshal_as<std::string>(textBox3->Text);
 		data->is_single = context.marshal_as<std::string>(textBox4->Text);
 

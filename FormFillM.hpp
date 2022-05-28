@@ -251,11 +251,11 @@ namespace DataBaseonC {
 
 		Band* temp1;
 		for (temp1 = &(db->band); temp1 != NULL; temp1 = temp1->next) {
-			comboBox1->Items->Add(context.marshal_as<String^>(temp1->data.band_name));
+			comboBox1->Items->Add(context.marshal_as<String^>(temp1->data.name));
 		}
 		Place* temp2;
 		for (temp2 = &(db->place); temp2 != NULL; temp2 = temp2->next) {
-			comboBox2->Items->Add(context.marshal_as<String^>(temp2->data.city));
+			comboBox2->Items->Add(context.marshal_as<String^>(temp2->data.name));
 		}
 	}
 	private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
@@ -279,8 +279,8 @@ namespace DataBaseonC {
 		data->band_id = findedId1;
 		data->place_id = findedId2;
 		data->birth_date = context.marshal_as<std::string>(textBox1->Text);
-		data->member_name = context.marshal_as<std::string>(textBox2->Text);
-		data->member_lastname = context.marshal_as<std::string>(textBox3->Text);
+		data->name = context.marshal_as<std::string>(textBox2->Text);
+		data->lastname = context.marshal_as<std::string>(textBox3->Text);
 		data->is_frontman = context.marshal_as<std::string>(textBox4->Text);
 
 		MessageBox::Show("Data's been sucsessfully recorded", "Done");

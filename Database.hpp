@@ -25,4 +25,37 @@ public:
 	void addInfo(int);
 	void saveInFile();
 	void loadFromFile();
+
+	template<typename Strc, typename FormFill, typename Table>
+	void AddInfoTemplate(bool*, bool, System::String^, Table*);
 };
+
+
+
+template<typename Strc, typename FormFill, typename Table>
+inline void Database::AddInfoTemplate(bool* isCreated, bool parentsCreated, System::String^ errorText, Table* table) {
+
+	Strc* data;
+	if (*isCreated) {
+
+		data = table->add_node();
+
+		Form^ fillform = gcnew FormFill(data, this);
+		fillform->Show();
+
+	}
+	else {
+		if (parentsCreated) {
+			data = table->fill_first_node();
+			if (data == NULL) return;
+
+			Form^ fillform = gcnew FormFill(data, this);
+			fillform->Show();
+
+			*isCreated = true;
+		}
+		else {
+			MessageBox::Show(errorText, "Error");
+		}
+	}
+}

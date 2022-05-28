@@ -120,7 +120,7 @@ namespace DataBaseonC {
 
 		Band* temp;
 		for (temp = &(db->band); temp != NULL; temp = temp->next) {
-			comboBox1->Items->Add(context.marshal_as<String^>(temp->data.band_name));
+			comboBox1->Items->Add(context.marshal_as<String^>(temp->data.name));
 		}
 	}
 	private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
@@ -133,6 +133,10 @@ namespace DataBaseonC {
 
 		choosedBand = context.marshal_as<std::string>(comboBox1->SelectedItem->ToString());
 		choosedBandId = db->band.find_id(choosedBand);
+		if (choosedBandId == -1) {
+			MessageBox::Show("Id error", "Error");
+			this->Close();
+		}
 
 		fout << "      Members of \"";
 		fout << choosedBand;
@@ -146,11 +150,11 @@ namespace DataBaseonC {
 				Place* tempPlace;
 				tempPlace = db->place.find_with_id(temp->data.place_id);
 
-				fout << temp->data.member_name;
+				fout << temp->data.name;
 				fout << "        ";
-				fout << temp->data.member_lastname;
+				fout << temp->data.lastname;
 				fout << "            ";
-				fout << tempPlace->data.city;
+				fout << tempPlace->data.name;
 				fout << "              ";
 				fout << temp->data.is_frontman;
 				fout << "\n";

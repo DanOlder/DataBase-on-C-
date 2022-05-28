@@ -20,6 +20,7 @@ enum {
 //for using std and system strings incompatible
 #include <msclr\marshal_cppstd.h>
 
+#include "AdditionalTemplates.hpp"
 #include "Mylist.hpp"
 
 #include "Album.hpp"

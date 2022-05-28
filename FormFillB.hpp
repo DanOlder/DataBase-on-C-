@@ -181,7 +181,7 @@ namespace DataBaseonC {
 		}
 
 		data->recordLabel_id = findedId;
-		data->band_name = context.marshal_as<std::string>(textBox2->Text);
+		data->name = context.marshal_as<std::string>(textBox2->Text);
 		data->year_of_forming = Convert::ToInt32(textBox3->Text);
 		
 		MessageBox::Show("Data's been sucsessfully recorded", "Done");
@@ -196,7 +196,7 @@ private: System::Void FormFillB_Load(System::Object^ sender, System::EventArgs^ 
 
 	RecordLabel* temp;
 	for (temp = &(db->recordlabel); temp!= NULL; temp = temp->next) {
-		comboBox1->Items->Add(context.marshal_as<String^>(temp->data.label_name));
+		comboBox1->Items->Add(context.marshal_as<String^>(temp->data.name));
 	}
 }
 };

@@ -137,6 +137,7 @@
     <ClCompile Include="Song.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="AdditionalTemplates.hpp" />
     <ClInclude Include="Album.hpp" />
     <ClInclude Include="Band.hpp" />
     <ClInclude Include="BigHeader.hpp" />

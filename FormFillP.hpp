@@ -15,7 +15,7 @@ namespace DataBaseonC {
 	public ref class FormFillP : public System::Windows::Forms::Form
 	{
 	public:
-		FormFillP(Place_strc* dataTemp)
+		FormFillP(Place_strc* dataTemp, Database* dbTemp)
 		{
 			this->MaximizeBox = false;
 			this->MinimizeBox = false;
@@ -170,7 +170,7 @@ namespace DataBaseonC {
 		msclr::interop::marshal_context context;
 		data->country = context.marshal_as<std::string>(textBox1->Text);
 		data->region = context.marshal_as<std::string>(textBox2->Text);
-		data->city = context.marshal_as<std::string>(textBox3->Text);
+		data->name = context.marshal_as<std::string>(textBox3->Text);
 
 		MessageBox::Show("Data's been sucsessfully recorded", "Done");
 		this->Close();

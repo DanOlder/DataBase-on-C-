@@ -148,7 +148,7 @@ namespace DataBaseonC {
 
 		Band* temp;
 		for (temp = &(db->band); temp != NULL; temp = temp->next) {
-			comboBox1->Items->Add(context.marshal_as<String^>(temp->data.band_name));
+			comboBox1->Items->Add(context.marshal_as<String^>(temp->data.name));
 		}
 	}
 private: System::Void comboBox1_SelectedIndexChanged(System::Object^ sender, System::EventArgs^ e) {
@@ -163,7 +163,7 @@ private: System::Void comboBox1_SelectedIndexChanged(System::Object^ sender, Sys
 	Album* temp;
 	for (temp = &(db->album); temp != NULL; temp = temp->next) {
 		if (temp->data.band_id == choosedBandId) {
-			comboBox2->Items->Add(context.marshal_as<String^>(temp->data.album_name));
+			comboBox2->Items->Add(context.marshal_as<String^>(temp->data.name));
 		}		
 	}
 }
@@ -177,6 +177,10 @@ private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e
 
 	choosedAlbum = context.marshal_as<std::string>(comboBox2->SelectedItem->ToString());
 	choosedAlbumId = db->album.find_id(choosedAlbum);
+	if (choosedAlbumId == -1) {
+		MessageBox::Show("Id error", "Error");
+		this->Close();
+	}
 
 	fout << "      Songs from Album \"";
 	fout << choosedAlbum;
@@ -187,7 +191,7 @@ private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e
 	for (temp = &(db->song); temp != NULL; temp = temp->next) {
 		if (temp->data.album_id == choosedAlbumId) {
 			
-			fout << temp->data.song_name;
+			fout << temp->data.name;
 			fout << "   ";
 			fout << temp->data.genre;
 			fout << "      ";

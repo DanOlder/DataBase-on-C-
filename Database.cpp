@@ -18,173 +18,45 @@ void Database::addInfo(int table_num){
     switch (table_num)
     {
         case A: {//album
-            Album_strc* data;
-            if (album_created) {
-
-                data = album.add_node();
-
-                Form^ fillform = gcnew FormFillA(data, this);
-                fillform->Show();
-            }
-            else {
-                if (band_created) {
-
-                    data = album.fill_first_node();
-                    if (data == NULL) return;
-
-                    Form^ fillform = gcnew FormFillA(data, this);
-                    fillform->Show();
-
-                    album_created = true;
-                }
-                else {
-                    MessageBox::Show("You need to create a band first", "Error");
-                }
-            }    
+          
+            AddInfoTemplate<Album_strc, FormFillA>
+                (&album_created, band_created, "You need to create a band first", &album);
             break;
         }
         case B: {//band
-            Band_strc* data;
-            if (band_created) {
-                
-                data = band.add_node();
 
-                Form^ fillform = gcnew FormFillB(data, this);
-                fillform->Show();
-
-            }
-            else {
-                if (recordlabel_created) {
-                    data = band.fill_first_node();
-                    if (data == NULL) return;
-
-                    Form^ fillform = gcnew FormFillB(data, this);
-                    fillform->Show();
-
-                    band_created = true;
-                }
-                else {
-                    MessageBox::Show("You need to create a label first", "Error");
-                }
-            }
+            AddInfoTemplate<Band_strc, FormFillB>
+                (&band_created, recordlabel_created, "You need to create a label first", &band);
             break;
         }
         case C: {//concert
-            Concert_strc* data;
-            if (concert_created) {
 
-                data = concert.add_node();
-
-                Form^ fillform = gcnew FormFillC(data, this);
-                fillform->Show();
-
-            }
-            else {
-                if (band_created && place_created) {
-                    data = concert.fill_first_node();
-                    if (data == NULL) return;
-
-                    Form^ fillform = gcnew FormFillC(data, this);
-                    fillform->Show();
-
-                    concert_created = true;
-                }
-                else {
-                    MessageBox::Show("You need to create a band and a place first", "Error");
-                }
-            }
+            AddInfoTemplate<Concert_strc, FormFillC>
+                (&concert_created, (band_created && place_created), "You need to create a band and a place first", &concert);
             break;
         }
         case M: {//member
-            Member_strc* data;
-            if (member_created) {
 
-                data = member.add_node();
-
-                Form^ fillform = gcnew FormFillM(data, this);
-                fillform->Show();
-
-            }
-            else {
-                if (band_created && place_created) {
-                    data = member.fill_first_node();
-                    if (data == NULL) return;
-
-                    Form^ fillform = gcnew FormFillM(data, this);
-                    fillform->Show();
-
-                    member_created = true;
-                }
-                else {
-                    MessageBox::Show("You need to create a band and a place first", "Error");
-                }
-            }
+            AddInfoTemplate<Member_strc, FormFillM>
+                (&member_created, (band_created && place_created), "You need to create a band and a place first", &member);
             break;
         }
         case P: {//place
-            Place_strc* data;
-            if (place_created) {
-                data = place.add_node();
 
-                Form^ fillform = gcnew FormFillP(data);
-                fillform->Show();
-
-            }
-            else {
-                data = place.fill_first_node();
-                if (data == NULL) return;
-
-                Form^ fillform = gcnew FormFillP(data);
-                fillform->Show();
-
-                place_created = true;
-            }
+            AddInfoTemplate<Place_strc, FormFillP>
+                (&place_created, 1, " ", &place);
             break;
         }
         case R: {//recordlabel
-            RecordLabel_strc* data;
-            if (recordlabel_created) {
-                data = recordlabel.add_node();
 
-                Form^ fillform = gcnew FormFillR(data);
-                fillform->Show();
-
-            }
-            else {
-                data = recordlabel.fill_first_node();
-                if (data == NULL) return;
-
-                Form^ fillform = gcnew FormFillR(data);
-                fillform->Show();
-
-                recordlabel_created = true;
-            }
+            AddInfoTemplate<RecordLabel_strc, FormFillR>
+                (&recordlabel_created, 1, " ", &recordlabel);
             break;
         }
         case S: {//song
-            Song_strc* data;
-            if (song_created) {
 
-                data = song.add_node();
-
-                Form^ fillform = gcnew FormFillS(data, this);
-                fillform->Show();
-
-            }
-            else {
-                if (album_created) {
-                    data = song.fill_first_node();
-                    if (data == NULL) return;
-
-                    Form^ fillform = gcnew FormFillS(data, this);
-                    fillform->Show();
-
-                    song_created = true;
-                }
-                else {
-                    MessageBox::Show("You need to create an album first","Error");
-                }
-            }
+            AddInfoTemplate<Song_strc, FormFillS>
+                (&song_created, album_created, "You need to create an album first", &song);
             break;
         }
     }
@@ -204,9 +76,8 @@ void Database::saveInFile()
         RecordLabel* temp;
         for (temp = &(this->recordlabel); temp != NULL; temp = temp->next) {
             RecordLabel_strc* data = &(temp->data);
-            //fout << temp->get_id();
-            //fout << " ";
-            fout << data->label_name;
+
+            fout << data->name;
             fout << delimiter;
             fout << data->year_of_found;
             fout << "\n";
@@ -219,13 +90,12 @@ void Database::saveInFile()
         Place* temp;
         for (temp = &(this->place); temp != NULL; temp = temp->next) {
             Place_strc* data = &(temp->data);
-            //fout << temp->get_id();
-            //fout << " ";
+
             fout << data->country;
             fout << delimiter;
             fout << data->region;
             fout << delimiter;
-            fout << data->city;
+            fout << data->name;
             fout << "\n";
         }
         fout << "\n";
@@ -236,11 +106,10 @@ void Database::saveInFile()
         Band* temp;
         for (temp = &(this->band); temp != NULL; temp = temp->next) {
             Band_strc* data = &(temp->data);
-            //fout << temp->get_id();
-            //fout << " ";
+
             fout << data->recordLabel_id;
             fout << delimiter;
-            fout << data->band_name;
+            fout << data->name;
             fout << delimiter;
             fout << data->year_of_forming;
             fout << "\n";
@@ -253,11 +122,10 @@ void Database::saveInFile()
         Album* temp;
         for (temp = &(this->album); temp != NULL; temp = temp->next) {
             Album_strc* data = &(temp->data);
-            //fout << temp->get_id();
-            //fout << " ";
+
             fout << data->band_id;
             fout << delimiter;
-            fout << data->album_name;
+            fout << data->name;
             fout << delimiter;
             fout << data->release_year;
             fout << delimiter;
@@ -272,11 +140,10 @@ void Database::saveInFile()
         Song* temp;
         for (temp = &(this->song); temp != NULL; temp = temp->next) {
             Song_strc* data = &(temp->data);
-            //fout << temp->get_id();
-            //fout << " ";
+
             fout << data->album_id;
             fout << delimiter;
-            fout << data->song_name;
+            fout << data->name;
             fout << delimiter;
             fout << data->genre;
             fout << delimiter;
@@ -291,17 +158,16 @@ void Database::saveInFile()
         Member* temp;
         for (temp = &(this->member); temp != NULL; temp = temp->next) {
             Member_strc* data = &(temp->data);
-            //fout << temp->get_id();
-            //fout << " ";
+
             fout << data->band_id;
             fout << delimiter;
             fout << data->place_id;
             fout << delimiter;
             fout << data->birth_date;
             fout << delimiter;
-            fout << data->member_name;
+            fout << data->name;
             fout << delimiter;
-            fout << data->member_lastname;
+            fout << data->lastname;
             fout << delimiter;
             fout << data->is_frontman;
             fout << "\n";
@@ -314,8 +180,7 @@ void Database::saveInFile()
         Concert* temp;
         for (temp = &(this->concert); temp != NULL; temp = temp->next) {
             Concert_strc* data = &(temp->data);
-            //fout << temp->get_id();
-            //fout << " ";
+
             fout << data->band_id;
             fout << delimiter;
             fout << data->place_id;
@@ -390,7 +255,7 @@ void Database::loadFromFile()
 
                         pos = str.find(delimiter);
                         token = str.substr(0, pos);
-                        data->label_name = token;
+                        data->name = token;
                         str.erase(0, pos + delimiter.length());
                         
                         pos = str.find(delimiter);
@@ -406,7 +271,7 @@ void Database::loadFromFile()
 
                         pos = str.find(delimiter);
                         token = str.substr(0, pos);
-                        data->label_name = token;
+                        data->name = token;
                         str.erase(0, pos + delimiter.length());
 
                         pos = str.find(delimiter);
@@ -439,7 +304,7 @@ void Database::loadFromFile()
 
                         pos = str.find(delimiter);
                         token = str.substr(0, pos);
-                        data->city = token;
+                        data->name = token;
                         str.erase(0, pos + delimiter.length());
 
                     }
@@ -460,7 +325,7 @@ void Database::loadFromFile()
 
                         pos = str.find(delimiter);
                         token = str.substr(0, pos);
-                        data->city = token;
+                        data->name = token;
                         str.erase(0, pos + delimiter.length());
 
 
@@ -485,7 +350,7 @@ void Database::loadFromFile()
 
                         pos = str.find(delimiter);
                         token = str.substr(0, pos);
-                        data->band_name = token;
+                        data->name = token;
                         str.erase(0, pos + delimiter.length());
 
                         pos = str.find(delimiter);
@@ -507,7 +372,7 @@ void Database::loadFromFile()
 
                             pos = str.find(delimiter);
                             token = str.substr(0, pos);
-                            data->band_name = token;
+                            data->name = token;
                             str.erase(0, pos + delimiter.length());
 
                             pos = str.find(delimiter);
@@ -542,7 +407,7 @@ void Database::loadFromFile()
 
                         pos = str.find(delimiter);
                         token = str.substr(0, pos);
-                        data->album_name = token;
+                        data->name = token;
                         str.erase(0, pos + delimiter.length());
 
                         pos = str.find(delimiter);
@@ -571,7 +436,7 @@ void Database::loadFromFile()
 
                             pos = str.find(delimiter);
                             token = str.substr(0, pos);
-                            data->album_name = token;
+                            data->name = token;
                             str.erase(0, pos + delimiter.length());
 
                             pos = str.find(delimiter);
@@ -610,7 +475,7 @@ void Database::loadFromFile()
 
                         pos = str.find(delimiter);
                         token = str.substr(0, pos);
-                        data->song_name = token;
+                        data->name = token;
                         str.erase(0, pos + delimiter.length());
 
                         pos = str.find(delimiter);
@@ -637,7 +502,7 @@ void Database::loadFromFile()
 
                             pos = str.find(delimiter);
                             token = str.substr(0, pos);
-                            data->song_name = token;
+                            data->name = token;
                             str.erase(0, pos + delimiter.length());
 
                             pos = str.find(delimiter);
@@ -685,12 +550,12 @@ void Database::loadFromFile()
 
                         pos = str.find(delimiter);
                         token = str.substr(0, pos);
-                        data->member_name = token;
+                        data->name = token;
                         str.erase(0, pos + delimiter.length());
 
                         pos = str.find(delimiter);
                         token = str.substr(0, pos);
-                        data->member_lastname = token;
+                        data->lastname = token;
                         str.erase(0, pos + delimiter.length());
 
                         pos = str.find(delimiter);
@@ -721,12 +586,12 @@ void Database::loadFromFile()
 
                             pos = str.find(delimiter);
                             token = str.substr(0, pos);
-                            data->member_name = token;
+                            data->name = token;
                             str.erase(0, pos + delimiter.length());
 
                             pos = str.find(delimiter);
                             token = str.substr(0, pos);
-                            data->member_lastname = token;
+                            data->lastname = token;
                             str.erase(0, pos + delimiter.length());
 
                             pos = str.find(delimiter);

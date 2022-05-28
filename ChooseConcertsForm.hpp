@@ -120,7 +120,7 @@ namespace DataBaseonC {
 
 		Band* temp;
 		for (temp = &(db->band); temp != NULL; temp = temp->next) {
-			comboBox1->Items->Add(context.marshal_as<String^>(temp->data.band_name));
+			comboBox1->Items->Add(context.marshal_as<String^>(temp->data.name));
 		}
 
 	}
@@ -134,6 +134,10 @@ namespace DataBaseonC {
 
 		choosedBand = context.marshal_as<std::string>(comboBox1->SelectedItem->ToString());
 		choosedBandId = db->band.find_id(choosedBand);
+		if (choosedBandId == -1) {
+			MessageBox::Show("Id error", "Error");
+			this->Close();
+		}
 
 		fout << "      Concerts of \"";
 		fout << choosedBand;
@@ -147,7 +151,7 @@ namespace DataBaseonC {
 				Place* tempPlace;
 				tempPlace = db->place.find_with_id(temp->data.place_id);
 
-				fout << tempPlace->data.city;
+				fout << tempPlace->data.name;
 				fout << "    ";
 				fout << temp->data.concert_date;
 				fout << "\n";

@@ -173,5 +173,8 @@
     <ClInclude Include="ChooseSongsForm.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="AdditionalTemplates.hpp">
+      <Filter>Header Files\DB</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

@@ -52,10 +52,10 @@ Class DataBaseonC.FormFillM: AutoLayout, AnsiClass, Class, Public, BeforeFieldIn
     Void .ctor(Member_type*, Database*): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
 Class DataBaseonC.FormFillP: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
   :System.Windows.Forms.Form
-    Void .ctor(Place_type*): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+    Void .ctor(Place_type*, Database*): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
 Class DataBaseonC.FormFillR: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
   :System.Windows.Forms.Form
-    Void .ctor(RecordLabel_type*): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+    Void .ctor(RecordLabel_type*, Database*): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
 Class DataBaseonC.FormFillS: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
   :System.Windows.Forms.Form
     Void .ctor(Song_type*, Database*): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName

@@ -179,11 +179,11 @@ namespace DataBaseonC {
 
 		Band* temp1;
 		for (temp1 = &(db->band); temp1 != NULL; temp1 = temp1->next) {
-			comboBox1->Items->Add(context.marshal_as<String^>(temp1->data.band_name));
+			comboBox1->Items->Add(context.marshal_as<String^>(temp1->data.name));
 		}
 		Place* temp2;
 		for (temp2 = &(db->place); temp2 != NULL; temp2 = temp2->next) {
-			comboBox2->Items->Add(context.marshal_as<String^>(temp2->data.city));
+			comboBox2->Items->Add(context.marshal_as<String^>(temp2->data.name));
 		}
 
 	}

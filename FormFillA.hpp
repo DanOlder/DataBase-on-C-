@@ -210,9 +210,11 @@ private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e
 	}
 
 	data->band_id = findedId;
-	data->album_name = context.marshal_as<std::string>(textBox2->Text);
+	data->name = context.marshal_as<std::string>(textBox2->Text);
 	data->release_year = Convert::ToInt32(textBox3->Text);
 	data->number_of_songs = Convert::ToInt32(textBox4->Text);
+
+
 
 	MessageBox::Show("Data's been sucsessfully recorded", "Done");
 	this->Close();
@@ -224,7 +226,7 @@ private: System::Void FormFillA_Load(System::Object^ sender, System::EventArgs^ 
 
 	Band* temp;
 	for (temp = &(db->band); temp != NULL; temp = temp->next) {
-		comboBox1->Items->Add(context.marshal_as<String^>(temp->data.band_name));
+		comboBox1->Items->Add(context.marshal_as<String^>(temp->data.name));
 	}
 }
 };

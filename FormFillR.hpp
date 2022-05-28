@@ -15,7 +15,7 @@ namespace DataBaseonC {
 	public ref class FormFillR : public System::Windows::Forms::Form
 	{
 	public:
-		FormFillR(RecordLabel_strc* dataTemp)
+		FormFillR(RecordLabel_strc* dataTemp, Database* dbTemp)
 		{
 			this->MaximizeBox = false;
 			this->MinimizeBox = false;
@@ -151,7 +151,7 @@ namespace DataBaseonC {
 private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
 
 	msclr::interop::marshal_context context;
-	data->label_name = context.marshal_as<std::string>(textBox1->Text);
+	data->name = context.marshal_as<std::string>(textBox1->Text);
 	data->year_of_found = Convert::ToInt32(textBox2->Text);
 	
 	MessageBox::Show("Data's been sucsessfully recorded", "Done");
