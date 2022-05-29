@@ -276,12 +276,7 @@ namespace DataBaseonC {
 			this->Close();
 		}
 
-		data->band_id = findedId1;
-		data->place_id = findedId2;
-		data->birth_date = context.marshal_as<std::string>(textBox1->Text);
-		data->name = context.marshal_as<std::string>(textBox2->Text);
-		data->lastname = context.marshal_as<std::string>(textBox3->Text);
-		data->is_frontman = context.marshal_as<std::string>(textBox4->Text);
+		db->fillInfo(data, findedId1, findedId2, context.marshal_as<std::string>(textBox1->Text), context.marshal_as<std::string>(textBox2->Text), context.marshal_as<std::string>(textBox3->Text), context.marshal_as<std::string>(textBox4->Text));
 
 		MessageBox::Show("Data's been sucsessfully recorded", "Done");
 		this->Close();

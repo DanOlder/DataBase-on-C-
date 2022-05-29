@@ -180,9 +180,7 @@ namespace DataBaseonC {
 			this->Close();
 		}
 
-		data->recordLabel_id = findedId;
-		data->name = context.marshal_as<std::string>(textBox2->Text);
-		data->year_of_forming = Convert::ToInt32(textBox3->Text);
+		db->fillInfo(data, findedId, context.marshal_as<std::string>(textBox2->Text), Convert::ToInt32(textBox3->Text));
 		
 		MessageBox::Show("Data's been sucsessfully recorded", "Done");
 		this->Close();

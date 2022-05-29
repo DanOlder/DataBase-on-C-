@@ -214,10 +214,7 @@ namespace DataBaseonC {
 			this->Close();
 		}
 
-		data->album_id = findedId;
-		data->name = context.marshal_as<std::string>(textBox2->Text);
-		data->genre = context.marshal_as<std::string>(textBox3->Text);
-		data->is_single = context.marshal_as<std::string>(textBox4->Text);
+		db->fillInfo(data, findedId, context.marshal_as<std::string>(textBox2->Text), context.marshal_as<std::string>(textBox3->Text), context.marshal_as<std::string>(textBox4->Text));
 
 		MessageBox::Show("Data's been sucsessfully recorded", "Done");
 		this->Close();

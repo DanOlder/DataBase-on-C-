@@ -538,3 +538,56 @@ void Database::loadFromFile()
 
     fin.close();
 }
+
+void Database::fillInfo(Album_strc* data, int band_id, std::string name, int release_year, int number_of_songs) {
+
+    putInfo<int>(&(data->band_id), band_id);
+    putInfo<std::string>(&(data->name), name);
+    putInfo<int>(&(data->release_year), release_year);
+    putInfo<int>(&(data->number_of_songs), number_of_songs);
+}
+
+void Database::fillInfo(Band_strc* data, int recordLabel_id, std::string name, int year_of_forming) {
+
+    putInfo<int>(&(data->recordLabel_id), recordLabel_id);
+    putInfo<std::string>(&(data->name), name);
+    putInfo<int>(&(data->year_of_forming), year_of_forming);
+}
+
+void Database::fillInfo(Concert_strc* data, int band_id, int place_id, std::string concert_date) {
+
+    putInfo<int>(&(data->band_id), band_id);
+    putInfo<int>(&(data->place_id), place_id);
+    putInfo<std::string>(&(data->concert_date), concert_date);
+}
+
+void Database::fillInfo(Member_strc* data, int band_id, int place_id, std::string birth_date, std::string name, std::string lastname, std::string is_frontman) {
+
+    putInfo<int>(&(data->band_id), band_id);
+    putInfo<int>(&(data->place_id), place_id);
+    putInfo<std::string>(&(data->birth_date), birth_date);
+    putInfo<std::string>(&(data->name), name);
+    putInfo<std::string>(&(data->lastname), lastname);
+    putInfo<std::string>(&(data->is_frontman), is_frontman);
+}
+
+void Database::fillInfo(Place_strc* data, std::string country, std::string region, std::string name) {
+
+    putInfo<std::string>(&(data->country), country);
+    putInfo<std::string>(&(data->region), region);
+    putInfo<std::string>(&(data->name), name);
+}
+
+void Database::fillInfo(RecordLabel_strc* data, std::string name, int year_of_found) {
+
+    putInfo<std::string>(&(data->name), name);
+    putInfo<int>(&(data->year_of_found), year_of_found);
+}
+
+void Database::fillInfo(Song_strc* data, int album_id, std::string name, std::string genre, std::string is_single) {
+
+    putInfo<int>(&(data->album_id), album_id);
+    putInfo<std::string>(&(data->name), name);
+    putInfo<std::string>(&(data->genre), genre);
+    putInfo<std::string>(&(data->is_single), is_single);
+}

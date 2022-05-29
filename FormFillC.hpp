@@ -205,9 +205,7 @@ namespace DataBaseonC {
 			this->Close();
 		}
 
-		data->band_id = findedId1;
-		data->place_id = findedId2;
-		data->concert_date = context.marshal_as<std::string>(textBox1->Text);
+		db->fillInfo(data, findedId1, findedId2, context.marshal_as<std::string>(textBox1->Text));
 
 		MessageBox::Show("Data's been sucsessfully recorded", "Done");
 		this->Close();

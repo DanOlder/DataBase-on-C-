@@ -209,12 +209,7 @@ private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e
 		this->Close();
 	}
 
-	data->band_id = findedId;
-	data->name = context.marshal_as<std::string>(textBox2->Text);
-	data->release_year = Convert::ToInt32(textBox3->Text);
-	data->number_of_songs = Convert::ToInt32(textBox4->Text);
-
-
+	db->fillInfo(data, findedId, context.marshal_as<std::string>(textBox2->Text), Convert::ToInt32(textBox3->Text), Convert::ToInt32(textBox4->Text));
 
 	MessageBox::Show("Data's been sucsessfully recorded", "Done");
 	this->Close();

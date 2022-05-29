@@ -22,6 +22,7 @@ namespace DataBaseonC {
 			this->ControlBox = false;
 
 			data = dataTemp;
+			db = dbTemp;
 			InitializeComponent();
 			//
 			//TODO: Add the constructor code here
@@ -48,6 +49,7 @@ namespace DataBaseonC {
 
 	private:
 		RecordLabel_strc* data;
+		Database* db;
 		/// <summary>
 		/// Required designer variable.
 		/// </summary>
@@ -151,8 +153,8 @@ namespace DataBaseonC {
 private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
 
 	msclr::interop::marshal_context context;
-	data->name = context.marshal_as<std::string>(textBox1->Text);
-	data->year_of_found = Convert::ToInt32(textBox2->Text);
+
+	db->fillInfo(data, context.marshal_as<std::string>(textBox1->Text), Convert::ToInt32(textBox2->Text));
 	
 	MessageBox::Show("Data's been sucsessfully recorded", "Done");
 	this->Close();

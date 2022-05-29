@@ -31,6 +31,17 @@ public:
 	
 	template<typename ElemType>
 	void putInfo(ElemType*, std::string*, std::string);
+
+	template<typename ElemType>
+	void putInfo(ElemType*, ElemType);
+
+	void fillInfo(Album_strc*,int,std::string,int,int);
+	void fillInfo(Band_strc*, int, std::string, int);
+	void fillInfo(Concert_strc*, int, int, std::string);
+	void fillInfo(Member_strc*, int, int, std::string, std::string, std::string, std::string);
+	void fillInfo(Place_strc*, std::string, std::string, std::string);
+	void fillInfo(RecordLabel_strc*, std::string, int);
+	void fillInfo(Song_strc*, int, std::string, std::string, std::string);
 };
 
 
@@ -105,4 +116,11 @@ void Database::putInfo(ElemType* elem, std::string* str, std::string delimiter) 
 	}
 	
 	str->erase(0, pos + delimiter.length());
+}
+
+template<typename ElemType>
+void Database::putInfo(ElemType* elem, ElemType elemForPutting) {
+
+	*elem = elemForPutting;
+
 }
